@@ -1,21 +1,24 @@
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom right, #0e1e3f, #112b4a);
+  font-family: Calibri, sans-serif;
+  background-color: #002a5c;
   color: #d3a451;
   text-align: center;
   margin: 0;
   padding: 20px;
+  position: relative;
 }
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/LOT_Polish_Airlines_logo.svg/2560px-LOT_Polish_Airlines_logo.svg.png') no-repeat center center;
-  background-size: 35%;
-  opacity: 0.04;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/LOT_Polish_Airlines_logo.svg') no-repeat center center;
+  background-size: contain;
+  opacity: 0.05;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
   z-index: 0;
 }
 body > * {
@@ -29,7 +32,7 @@ h1 {
   margin: 20px 0;
 }
 .lang-btn, .cat-btn {
-  background-color: #8b5e3c;
+  background-color: #d3a451;
   color: white;
   border: none;
   border-radius: 20px;
@@ -37,12 +40,16 @@ h1 {
   margin: 5px;
   font-weight: bold;
   cursor: pointer;
+  font-family: Calibri, sans-serif;
+}
+.lang-btn:hover, .cat-btn:hover {
+  background-color: #b58b32;
 }
 .cocktail {
   margin: 20px auto;
   padding: 10px;
   border-radius: 12px;
-  background-color: #1e2f47;
+  background-color: #0e1e3f;
   max-width: 500px;
 }
 .cocktail-name {
