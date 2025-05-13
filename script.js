@@ -63,13 +63,13 @@ function renderCocktails() {
         const div = document.createElement('div');
         div.className = 'cocktail-card';
         const name = document.createElement('h2');
-        name.textContent = c.name;
+        name.textContent = c.name[language];
         div.appendChild(name);
-        c.ingredients.forEach(ing => {
-            const p = document.createElement('p');
-            p.textContent = ing;
-            div.appendChild(p);
-        });
+        c.ingredients[language].forEach(ing => {
+    const p = document.createElement("p");
+    p.textContent = ing;
+    div.appendChild(p);
+  });
         container.appendChild(div);
     });
 }
