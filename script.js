@@ -1,12 +1,11 @@
+
 let language = 'pl';
 let categoryFilter = 'all';
 
 function setLanguage(lang) {
   language = lang;
-  document.getElementById("menu-title").innerText = lang === 'pl' ? 'Menu drinków' : 'Drinks Menu';
   renderCategories();
   renderCocktails();
-  updateFooter();
 }
 
 function setCategory(category) {
@@ -22,7 +21,7 @@ function renderCategories() {
     rum: { pl: "Rum", en: "Rum" },
     liqueur: { pl: "Likier", en: "Liqueur" },
     gin: { pl: "Gin", en: "Gin" },
-    "non-alcoholic": { pl: "Bezalkoholowe", en: "Non-Alcoholic" }
+    nonalcoholic: { pl: "Bezalkoholowe", en: "Non-Alcoholic" }
   };
   const container = document.getElementById("category-buttons");
   container.innerHTML = '';
@@ -54,15 +53,7 @@ function renderCocktails() {
   });
 }
 
-function updateFooter() {
-  document.getElementById("footer-text").innerText =
-    language === 'pl'
-    ? "Najlepszym podziękowaniem będzie Twoja opinia."
-    : "The best thank you is your review.";
-}
-
 window.onload = () => {
   renderCategories();
   renderCocktails();
-  updateFooter();
 };
