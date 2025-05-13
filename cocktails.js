@@ -1,3 +1,4 @@
+
 const cocktails = [
   {
     name: { pl: "Mimosa", en: "Mimosa" },
@@ -102,9 +103,7 @@ const cocktails = [
       en: ["Pineapple juice", "Mint syrup", "Lemon juice", "Ice"]
     },
     category: "non_alcoholic"
-  }
-
-,
+  },
   {
     name: { pl: "Mojito Truskawkowe", en: "Strawberry Mojito" },
     ingredients: {
@@ -161,5 +160,4 @@ const cocktails = [
     },
     category: "non_alcoholic"
   }
-]
-;
+];
