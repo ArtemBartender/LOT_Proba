@@ -56,15 +56,15 @@ function renderCategories() {
 
 function renderCocktails() {
   const container = document.getElementById("cocktail-list");
-  container.innerHTML = '';
+  container.innerHTML = "";
   const filtered = cocktails.filter(c => currentCategory === 'all' || c.category === currentCategory);
   filtered.forEach(c => {
     const card = document.createElement("div");
     card.className = "cocktail-card";
 
-    const name = document.createElement("h2");
-    name.textContent = c.name[language];
-    card.appendChild(name);
+    const nameEl = document.createElement("h2");
+    nameEl.textContent = c.name[language];
+    card.appendChild(nameEl);
 
     c.ingredients[language].forEach(ing => {
       const p = document.createElement("p");
