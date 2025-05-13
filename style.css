@@ -1,44 +1,28 @@
 
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom right, #0e1e3f, #112b4a);
-  color: #d3a451;
-  text-align: center;
   margin: 0;
+  font-family: Calibri, sans-serif;
+  background: linear-gradient(#071d3c, #0c2347);
+  color: white;
+  text-align: center;
+}
+.container {
   padding: 20px;
 }
-h1 {
-  margin-top: 20px;
-}
-.language-buttons, .category-buttons {
-  margin: 20px 0;
-}
-.lang-btn, .cat-btn {
-  background-color: #8b5e3c;
+button {
+  background-color: #a66a38;
   color: white;
   border: none;
   border-radius: 20px;
-  padding: 10px 20px;
   margin: 5px;
+  padding: 10px 20px;
   font-weight: bold;
   cursor: pointer;
 }
-.lang-btn:hover, .cat-btn:hover {
-  background-color: #a97045;
-}
-.cocktail {
-  margin: 20px auto;
+.cocktail-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  margin: 10px auto;
   padding: 10px;
-  border-radius: 12px;
-  background-color: #1e2f47;
-  max-width: 500px;
-}
-.cocktail-name {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-}
-.ingredients {
-  margin-top: 10px;
-  font-size: 16px;
+  width: 80%;
 }
