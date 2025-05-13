@@ -1,44 +1,78 @@
 
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom right, #0e1e3f, #112b4a);
-  color: #d3a451;
-  text-align: center;
-  margin: 0;
-  padding: 20px;
+    margin: 0;
+    font-family: Calibri, sans-serif;
+    background: #0b1c3b;
+    color: #fff;
+    overflow-x: hidden;
 }
+
+.container {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
 h1 {
-  margin-top: 20px;
+    color: #f9c74f;
+    margin-bottom: 10px;
 }
-.language-buttons, .category-buttons {
-  margin: 20px 0;
+
+.language-switch, .category-switch {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
-.lang-btn, .cat-btn {
-  background-color: #8b5e3c;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  margin: 5px;
-  font-weight: bold;
-  cursor: pointer;
+
+button {
+    padding: 10px 20px;
+    background: #8b5e3c;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
 }
-.lang-btn:hover, .cat-btn:hover {
-  background-color: #a97045;
+
+button:hover {
+    background: #a66b3d;
 }
-.cocktail {
-  margin: 20px auto;
-  padding: 10px;
-  border-radius: 12px;
-  background-color: #1e2f47;
-  max-width: 500px;
+
+.cocktail-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    margin: 10px auto;
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 500px;
 }
-.cocktail-name {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
+
+.cocktail-card h2 {
+    color: white;
+    margin-bottom: 5px;
 }
-.ingredients {
-  margin-top: 10px;
-  font-size: 16px;
+
+.cocktail-card p {
+    color: #f9c74f;
+    margin: 2px;
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #f9c74f;
+}
+
+.background-logo {
+    background: url('assets/logo.png') center/200px no-repeat;
+    opacity: 0.05;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    z-index: 0;
 }

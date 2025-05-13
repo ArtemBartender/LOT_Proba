@@ -1,59 +1,80 @@
 
 let language = 'pl';
-let categoryFilter = 'all';
+let currentCategory = 'all';
 
-function setLanguage(lang) {
-  language = lang;
-  renderCategories();
-  renderCocktails();
+const translations = {
+    pl: {
+        title: "Menu drinków",
+        footer: "Najlepszym podziękowaniem będzie Twoja opinia.",
+        categories: {
+            all: "Wszystkie",
+            vodka: "Wódka",
+            whiskey: "Whiskey & Bourbon",
+            rum: "Rum",
+            liqueur: "Likier",
+            gin: "Gin",
+            nonalcoholic: "Bezakoholowe"
+        }
+    },
+    en: {
+        title: "Cocktail Menu",
+        footer: "The best thank you is your opinion.",
+        categories: {
+            all: "All",
+            vodka: "Vodka",
+            whiskey: "Whiskey & Bourbon",
+            rum: "Rum",
+            liqueur: "Liqueur",
+            gin: "Gin",
+            nonalcoholic: "Non-alcoholic"
+        }
+    }
+};
+
+function changeLanguage(lang) {
+    language = lang;
+    document.getElementById('title').textContent = translations[lang].title;
+    document.getElementById('footer-text').textContent = translations[lang].footer;
+    renderCategories();
+    renderCocktails();
 }
 
-function setCategory(category) {
-  categoryFilter = category;
-  renderCocktails();
+function changeCategory(category) {
+    currentCategory = category;
+    renderCocktails();
 }
 
 function renderCategories() {
-  const categories = {
-    all: { pl: "Wszystkie", en: "All" },
-    vodka: { pl: "Wódka", en: "Vodka" },
-    whiskey: { pl: "Whiskey & Bourbon", en: "Whiskey & Bourbon" },
-    rum: { pl: "Rum", en: "Rum" },
-    liqueur: { pl: "Likier", en: "Liqueur" },
-    gin: { pl: "Gin", en: "Gin" },
-    nonalcoholic: { pl: "Bezalkoholowe", en: "Non-Alcoholic" }
-  };
-  const container = document.getElementById("category-buttons");
-  container.innerHTML = '';
-  for (const [key, val] of Object.entries(categories)) {
-    const btn = document.createElement("button");
-    btn.innerText = val[language];
-    btn.className = "cat-btn";
-    btn.onclick = () => setCategory(key);
-    container.appendChild(btn);
-  }
+    const container = document.getElementById('category-buttons');
+    container.innerHTML = '';
+    for (const [key, value] of Object.entries(translations[language].categories)) {
+        const btn = document.createElement('button');
+        btn.textContent = value;
+        btn.onclick = () => changeCategory(key);
+        container.appendChild(btn);
+    }
 }
 
 function renderCocktails() {
-  const list = document.getElementById("cocktail-list");
-  list.innerHTML = '';
-  const filtered = cocktails.filter(c => categoryFilter === 'all' || c.category === categoryFilter);
-  filtered.forEach(c => {
-    const card = document.createElement("div");
-    card.className = "cocktail";
-    const title = document.createElement("div");
-    title.className = "cocktail-name";
-    title.innerText = c.name[language];
-    const ing = document.createElement("div");
-    ing.className = "ingredients";
-    ing.innerHTML = c.ingredients[language].join("<br>");
-    card.appendChild(title);
-    card.appendChild(ing);
-    list.appendChild(card);
-  });
+    const container = document.getElementById('cocktail-list');
+    container.innerHTML = '';
+    const filtered = cocktails.filter(c => currentCategory === 'all' || c.category === currentCategory);
+    filtered.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'cocktail-card';
+        const name = document.createElement('h2');
+        name.textContent = c.name;
+        div.appendChild(name);
+        c.ingredients.forEach(ing => {
+            const p = document.createElement('p');
+            p.textContent = ing;
+            div.appendChild(p);
+        });
+        container.appendChild(div);
+    });
 }
 
-window.onload = () => {
-  renderCategories();
-  renderCocktails();
-};
+document.addEventListener("DOMContentLoaded", () => {
+    renderCategories();
+    renderCocktails();
+});
