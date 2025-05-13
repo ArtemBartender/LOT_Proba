@@ -22,7 +22,7 @@ function renderCategories() {
     rum: { pl: "Rum", en: "Rum" },
     liqueur: { pl: "Likier", en: "Liqueur" },
     gin: { pl: "Gin", en: "Gin" },
-    nonalcoholic: { pl: "Bezalkoholowe", en: "Non-Alcoholic" }
+    "non-alcoholic": { pl: "Bezalkoholowe", en: "Non-Alcoholic" }
   };
   const container = document.getElementById("category-buttons");
   container.innerHTML = '';
