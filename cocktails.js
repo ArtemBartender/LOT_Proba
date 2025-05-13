@@ -1,4 +1,11 @@
 const cocktails = [
+    { name: { pl: "Blue Orange Whiskey Sour", en: "Blue Orange Whiskey Sour" },
+    ingredients: {
+      pl: ["Bushmills Original", "Blue Curacao Syrop", "Syrop cukrowy", "Sok z cytryny"],
+      en: ["Bushmills Original", "Blue Curacao Syrup", "Simple syrup", "Lemon juice"]
+    },
+    category: "whiskey"
+  },
   { name: { pl: "Blue Lagoon", en: "Blue Lagoon" }, ingredients: { pl: ["Gin", "Blue Curacao Syrop", "Woda gazowana"], en: ["Gin", "Blue Curacao Syrup", "Sparkling water"] }, category: "gin" },
   { name: { pl: "Irish Sunset", en: "Irish Sunset" }, ingredients: { pl: ["Irish Whiskey", "Passion Fruit Syrup", "Nektar ananasowy"], en: ["Irish Whiskey", "Passion Fruit Syrup", "Pineapple nectar"] }, category: "whiskey" },
   { name: { pl: "Spiced Apricot", en: "Spiced Apricot" }, ingredients: { pl: ["Wódka smakowa (morelowa)", "Spiced Rum", "Nektar z czarnej porzeczki"], en: ["Flavored vodka (apricot)", "Spiced Rum", "Blackcurrant nectar"] }, category: "vodka" },
