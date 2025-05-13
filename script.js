@@ -1,3 +1,6 @@
+let language = 'pl';
+let currentCategory = 'all';
+
 const translations = {
   pl: {
     title: "Menu drinków",
@@ -27,9 +30,6 @@ const translations = {
   }
 };
 
-let language = "pl";
-let currentCategory = "all";
-
 function changeLanguage(lang) {
   language = lang;
   document.getElementById("title").textContent = translations[lang].title;
@@ -39,14 +39,13 @@ function changeLanguage(lang) {
 }
 
 function renderCategories() {
-  const categories = ['all', 'vodka', 'whiskey', 'rum', 'liqueur', 'gin', 'non_alcoholic'];
   const container = document.getElementById("category-buttons");
   container.innerHTML = '';
-  categories.forEach(cat => {
+  Object.entries(translations[language].categories).forEach(([key, label]) => {
     const btn = document.createElement("button");
-    btn.textContent = translations[language].categories[cat];
+    btn.textContent = label;
     btn.onclick = () => {
-      currentCategory = cat;
+      currentCategory = key;
       renderCocktails();
     };
     container.appendChild(btn);
@@ -58,17 +57,17 @@ function renderCocktails() {
   container.innerHTML = '';
   const filtered = cocktails.filter(c => currentCategory === 'all' || c.category === currentCategory);
   filtered.forEach(c => {
-    const div = document.createElement("div");
-    div.className = 'cocktail-card';
+    const card = document.createElement("div");
+    card.className = "cocktail-card";
     const name = document.createElement("h2");
     name.textContent = c.name[language];
-    div.appendChild(name);
-    c.ingredients[language].forEach(ing => {
+    card.appendChild(name);
+    c.ingredients[language].forEach(i => {
       const p = document.createElement("p");
-      p.textContent = ing;
-      div.appendChild(p);
+      p.textContent = i;
+      card.appendChild(p);
     });
-    container.appendChild(div);
+    container.appendChild(card);
   });
 }
 

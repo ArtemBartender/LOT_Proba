@@ -1,7 +1,7 @@
 body {
   font-family: Calibri, sans-serif;
   background: linear-gradient(to bottom, #001f4d, #003366);
-  color: #fff;
+  color: white;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -9,7 +9,8 @@ body {
 .container {
   padding: 20px;
 }
-.language-switch button, .category-switch button {
+.language-switch button,
+.category-switch button {
   background-color: #a86a3d;
   color: white;
   border: none;
@@ -20,9 +21,15 @@ body {
   cursor: pointer;
 }
 .cocktail-card {
-  background-color: #0a1f3c;
-  border-radius: 10px;
-  margin: 15px auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  margin: 20px auto;
   padding: 15px;
+  border-radius: 10px;
   width: 80%;
+  max-width: 500px;
+}
+footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #ffc;
 }

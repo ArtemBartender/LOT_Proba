@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Menu drinków</title>
+  <title id="title">Menu drinków</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,9 +13,9 @@
       <button onclick="changeLanguage('pl')">PL</button>
       <button onclick="changeLanguage('en')">EN</button>
     </div>
-    <div id="category-buttons" class="category-switch"></div>
-    <div id="cocktail-list" class="cocktail-list"></div>
-    <p id="footer-text">Najlepszym podziękowaniem będzie Twoja opinia.</p>
+    <div class="category-switch" id="category-buttons"></div>
+    <div class="cocktail-list" id="cocktail-list"></div>
+    <footer><p id="footer-text">Najlepszym podziękowaniem będzie Twoja opinia.</p></footer>
   </div>
   <script src="cocktails.js"></script>
   <script src="script.js"></script>
