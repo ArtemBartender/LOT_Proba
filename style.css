@@ -1,78 +1,54 @@
-
 body {
-    margin: 0;
     font-family: Calibri, sans-serif;
-    background: #0b1c3b;
-    color: #fff;
+    background: linear-gradient(to bottom, #0d1b3d, #1a2a4f);
+    color: white;
+    margin: 0;
+    padding: 1em;
+    position: relative;
     overflow-x: hidden;
 }
 
-.container {
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    z-index: 2;
-}
-
-h1 {
-    color: #f9c74f;
-    margin-bottom: 10px;
-}
-
-.language-switch, .category-switch {
-    margin: 10px auto;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    background: #8b5e3c;
+.language-buttons button,
+.category-buttons button {
+    background-color: #a26a3e;
     color: white;
     border: none;
+    padding: 10px 20px;
+    margin: 5px;
     border-radius: 20px;
+    font-size: 1em;
     cursor: pointer;
-    font-weight: bold;
 }
 
-button:hover {
-    background: #a66b3d;
+hr {
+    margin: 1em 0;
+    border-color: #caa76c;
 }
 
 .cocktail-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    margin: 10px auto;
-    padding: 15px;
+    background-color: rgba(0,0,0,0.2);
+    padding: 1em;
+    margin: 1em 0;
     border-radius: 10px;
-    max-width: 500px;
-}
-
-.cocktail-card h2 {
-    color: white;
-    margin-bottom: 5px;
-}
-
-.cocktail-card p {
-    color: #f9c74f;
-    margin: 2px;
+    text-align: center;
 }
 
 footer {
-    margin-top: 40px;
-    font-size: 14px;
-    color: #f9c74f;
+    text-align: center;
+    margin-top: 2em;
+    color: #f2c94c;
 }
 
 .background-logo {
-    background: url('assets/logo.png') center/200px no-repeat;
-    opacity: 0.05;
-    position: fixed;
+    position: absolute;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
+    background: url('assets/logo.png') no-repeat center center;
+    background-size: 300px;
+    width: 300px;
+    height: 300px;
+    opacity: 0.05;
     z-index: 0;
+    pointer-events: none;
 }
