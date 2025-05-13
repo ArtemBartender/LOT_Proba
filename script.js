@@ -1,4 +1,3 @@
-
 let language = 'pl';
 let categoryFilter = 'all';
 
@@ -6,11 +5,13 @@ function setLanguage(lang) {
   language = lang;
   renderCategories();
   renderCocktails();
+  updateFooter();
 }
 
 function setCategory(category) {
   categoryFilter = category;
   renderCocktails();
+  updateFooter();
 }
 
 function renderCategories() {
@@ -54,6 +55,15 @@ function renderCocktails() {
 }
 
 window.onload = () => {
+  updateFooter();
   renderCategories();
   renderCocktails();
+  updateFooter();
 };
+
+function updateFooter() {
+  document.getElementById("footer-text").innerText =
+    language === 'pl'
+      ? "Najlepszym podziękowaniem będzie Twoja opinia."
+      : "The best thank you is your review.";
+}
