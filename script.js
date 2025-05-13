@@ -32,7 +32,9 @@ const translations = {
 
 function changeLanguage(lang) {
   language = lang;
-  document.getElementById("title").textContent = translations[lang].title;
+  document.documentElement.lang = lang;
+  document.title = translations[lang].title;
+  document.getElementById("page-title").textContent = translations[lang].title;
   document.getElementById("footer-text").textContent = translations[lang].footer;
   renderCategories();
   renderCocktails();
@@ -40,7 +42,7 @@ function changeLanguage(lang) {
 
 function renderCategories() {
   const container = document.getElementById("category-buttons");
-  container.innerHTML = '';
+  container.innerHTML = "";
   Object.entries(translations[language].categories).forEach(([key, label]) => {
     const btn = document.createElement("button");
     btn.textContent = label;
@@ -59,19 +61,19 @@ function renderCocktails() {
   filtered.forEach(c => {
     const card = document.createElement("div");
     card.className = "cocktail-card";
+
     const name = document.createElement("h2");
     name.textContent = c.name[language];
     card.appendChild(name);
-    c.ingredients[language].forEach(i => {
+
+    c.ingredients[language].forEach(ing => {
       const p = document.createElement("p");
-      p.textContent = i;
+      p.textContent = ing;
       card.appendChild(p);
     });
+
     container.appendChild(card);
   });
 }
 
-window.onload = () => {
-  renderCategories();
-  renderCocktails();
-};
+window.onload = () => changeLanguage(language);
