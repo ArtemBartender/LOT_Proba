@@ -119,4 +119,109 @@ const cocktails = [
     ingredients: { pl: ["Sok ananasowy", "Syrop miętowy", "Sok z cytryny", "Lód"], en: ["Pineapple juice", "Mint syrup", "Lemon juice", "Ice"] },
     category: "non-alcoholic"
   }
-];
+,
+  {
+    name: { pl: "Ginger Fresh", en: "Ginger Fresh" },
+    ingredients: {
+      pl: ["Syrop imbirowy", "Sok z cytryny", "Woda gazowana", "Mięta", "Lód"],
+      en: ["Ginger syrup", "Lemon juice", "Sparkling water", "Mint", "Ice"]
+    },
+    category: "non-alcoholic"
+  },
+  {
+    name: { pl: "Berry Boost", en: "Berry Boost" },
+    ingredients: {
+      pl: ["Syrop malinowy", "Sok żurawinowy", "Sok z cytryny", "Woda gazowana", "Lód"],
+      en: ["Raspberry syrup", "Cranberry juice", "Lemon juice", "Sparkling water", "Ice"]
+    },
+    category: "non-alcoholic"
+  },
+  {
+    name: { pl: "Pomegranate Sparkle", en: "Pomegranate Sparkle" },
+    ingredients: {
+      pl: ["Syrop z granatu", "Sok z cytryny", "Woda gazowana", "Lód"],
+      en: ["Pomegranate syrup", "Lemon juice", "Sparkling water", "Ice"]
+    },
+    category: "non-alcoholic"
+  },
+  {
+    name: { pl: "Passion Fruit Punch", en: "Passion Fruit Punch" },
+    ingredients: {
+      pl: ["Syrop z marakui", "Sok pomarańczowy", "Woda sodowa", "Lód"],
+      en: ["Passion fruit syrup", "Orange juice", "Soda water", "Ice"]
+    },
+    category: "non-alcoholic"
+  },
+  {
+    name: { pl: "Pineapple Mint Splash", en: "Pineapple Mint Splash" },
+    ingredients: {
+      pl: ["Sok ananasowy", "Syrop miętowy", "Sok z cytryny", "Lód"],
+      en: ["Pineapple juice", "Mint syrup", "Lemon juice", "Ice"]
+    },
+    category: "non-alcoholic"
+  },
+  {
+    name: { pl: "Irishman", en: "Irishman" },
+    ingredients: {
+      pl: ["Irish Cream", "Syrop waniliowy", "Mleko lub śmietanka"],
+      en: ["Irish Cream", "Vanilla syrup", "Milk or cream"]
+    },
+    category: "liqueur"
+  },
+  {
+    name: { pl: "Mojito Truskawkowe", en: "Strawberry Mojito" },
+    ingredients: {
+      pl: ["Mięta", "Limonka", "Syrop truskawkowy", "Woda gazowana"],
+      en: ["Mint", "Lime", "Strawberry syrup", "Sparkling water"]
+    },
+    category: "non-alcoholic"
+  },
+  {
+    name: { pl: "Mojito Marakuja", en: "Passion Fruit Mojito" },
+    ingredients: {
+      pl: ["Mięta", "Limonka", "Syrop z marakui", "Woda gazowana"],
+      en: ["Mint", "Lime", "Passion fruit syrup", "Sparkling water"]
+    },
+    category: "non-alcoholic"
+  },
+  {
+    name: { pl: "Mojito Bzu", en: "Elderflower Mojito" },
+    ingredients: {
+      pl: ["Mięta", "Limonka", "Syrop bzu", "Woda gazowana"],
+      en: ["Mint", "Lime", "Elderflower syrup", "Sparkling water"]
+    },
+    category: "non-alcoholic"
+  },
+  {
+    name: { pl: "Mojito Granat", en: "Pomegranate Mojito" },
+    ingredients: {
+      pl: ["Mięta", "Limonka", "Syrop z granatu", "Woda gazowana"],
+      en: ["Mint", "Lime", "Pomegranate syrup", "Sparkling water"]
+    },
+    category: "non-alcoholic"
+  },
+  {
+    name: { pl: "Mojito Pomarańcza", en: "Orange Mojito" },
+    ingredients: {
+      pl: ["Mięta", "Limonka", "Syrop pomarańczowy", "Woda gazowana"],
+      en: ["Mint", "Lime", "Orange syrup", "Sparkling water"]
+    },
+    category: "non-alcoholic"
+  },
+  {
+    name: { pl: "Mojito Kokosowe", en: "Coconut Mojito" },
+    ingredients: {
+      pl: ["Mięta", "Limonka", "Syrop kokosowy", "Woda gazowana"],
+      en: ["Mint", "Lime", "Coconut syrup", "Sparkling water"]
+    },
+    category: "non-alcoholic"
+  },
+  {
+    name: { pl: "Mojito Mango", en: "Mango Mojito" },
+    ingredients: {
+      pl: ["Mięta", "Limonka", "Syrop mango", "Woda gazowana"],
+      en: ["Mint", "Lime", "Mango syrup", "Sparkling water"]
+    },
+    category: "non-alcoholic"
+  }
+]
