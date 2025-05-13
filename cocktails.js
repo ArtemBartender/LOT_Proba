@@ -32,4 +32,36 @@ const cocktails = [
     },
     category: "whiskey"
   }
-];
+
+  {
+    name: { pl: "Sharlotka", en: "Sharlotka" },
+    ingredients: {
+      pl: ['Wódka', 'Sok jabłkowy', 'Syrop waniliowy', 'Sok z cytryny'],
+      en: ['Vodka', 'Apple juice', 'Vanilla syrup', 'Lemon juice']
+    },
+    category: "vodka"
+  },
+  {
+    name: { pl: "Gold Rush", en: "Gold Rush" },
+    ingredients: {
+      pl: ['Whiskey', 'Krupnik', 'Sok z cytryny'],
+      en: ['Whiskey', 'Honey liqueur', 'Lemon juice']
+    },
+    category: "whiskey"
+  },
+  {
+    name: { pl: "Old Virginia Manhattan", en: "Old Virginia Manhattan" },
+    ingredients: {
+      pl: ['Bourbon', 'Martini Bianco', 'Angostura'],
+      en: ['Bourbon', 'Martini Bianco', 'Angostura']
+    },
+    category: "whiskey"
+  },
+  {
+    name: { pl: "The Curious Jackalope", en: "The Curious Jackalope" },
+    ingredients: {
+      pl: ['Gin', 'Sok z limonki', 'Sok grejpfrutowy', 'Syrop cukrowy'],
+      en: ['Gin', 'Lime juice', 'Grapefruit juice', 'Sugar syrup']
+    },
+    category: "gin"
+  },];
