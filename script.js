@@ -1,55 +1,59 @@
+
 let language = 'pl';
-let currentCategory = 'all';
+let categoryFilter = 'all';
+
+function setLanguage(lang) {
+  language = lang;
+  renderCategories();
+  renderCocktails();
+}
+
+function setCategory(category) {
+  categoryFilter = category;
+  renderCocktails();
+}
 
 function renderCategories() {
-    const categories = ['all', 'vodka', 'whiskey', 'rum', 'liqueur', 'gin', 'non_alcoholic'];
-    const labels = {
-        pl: ['Wszystkie', 'Wódka', 'Whiskey & Bourbon', 'Rum', 'Likier', 'Gin', 'Bezalkoholowe'],
-        en: ['All', 'Vodka', 'Whiskey & Bourbon', 'Rum', 'Liqueur', 'Gin', 'Non-alcoholic']
-    };
-    const container = document.getElementById('category-buttons');
-    container.innerHTML = '';
-    categories.forEach((cat, i) => {
-        const btn = document.createElement('button');
-        btn.textContent = labels[language][i];
-        btn.onclick = () => {
-            currentCategory = cat;
-            renderCocktails();
-        };
-        container.appendChild(btn);
-    });
+  const categories = {
+    all: { pl: "Wszystkie", en: "All" },
+    vodka: { pl: "Wódka", en: "Vodka" },
+    whiskey: { pl: "Whiskey & Bourbon", en: "Whiskey & Bourbon" },
+    rum: { pl: "Rum", en: "Rum" },
+    liqueur: { pl: "Likier", en: "Liqueur" },
+    gin: { pl: "Gin", en: "Gin" },
+    nonalcoholic: { pl: "Bezalkoholowe", en: "Non-Alcoholic" }
+  };
+  const container = document.getElementById("category-buttons");
+  container.innerHTML = '';
+  for (const [key, val] of Object.entries(categories)) {
+    const btn = document.createElement("button");
+    btn.innerText = val[language];
+    btn.className = "cat-btn";
+    btn.onclick = () => setCategory(key);
+    container.appendChild(btn);
+  }
 }
 
 function renderCocktails() {
-    const container = document.getElementById('cocktail-list');
-    container.innerHTML = '';
-    const filtered = cocktails.filter(c => currentCategory === 'all' || c.category === currentCategory);
-    filtered.forEach(c => {
-        const div = document.createElement('div');
-        div.className = 'cocktail-card';
-        const name = document.createElement('h2');
-        name.textContent = c.name[language];
-        div.appendChild(name);
-        c.ingredients[language].forEach(ing => {
-            const p = document.createElement('p');
-            p.textContent = ing;
-            div.appendChild(p);
-        });
-        container.appendChild(div);
-    });
+  const list = document.getElementById("cocktail-list");
+  list.innerHTML = '';
+  const filtered = cocktails.filter(c => categoryFilter === 'all' || c.category === categoryFilter);
+  filtered.forEach(c => {
+    const card = document.createElement("div");
+    card.className = "cocktail";
+    const title = document.createElement("div");
+    title.className = "cocktail-name";
+    title.innerText = c.name[language];
+    const ing = document.createElement("div");
+    ing.className = "ingredients";
+    ing.innerHTML = c.ingredients[language].join("<br>");
+    card.appendChild(title);
+    card.appendChild(ing);
+    list.appendChild(card);
+  });
 }
 
-function setLanguage(lang) {
-    language = lang;
-    renderCategories();
-    renderCocktails();
-    document.getElementById("footer-text").textContent = 
-        lang === 'pl' ? "Najlepszym podziękowaniem będzie Twoja opinia." : 
-                        "The best thank you is your feedback.";
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    renderCategories();
-    renderCocktails();
-    setLanguage('pl');
-});
+window.onload = () => {
+  renderCategories();
+  renderCocktails();
+};
