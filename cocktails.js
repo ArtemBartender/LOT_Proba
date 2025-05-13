@@ -4,7 +4,7 @@ const cocktails = [
   { name: { pl: "Irish Sunset", en: "Irish Sunset" }, ingredients: { pl: ["Whiskey", "Passion Fruit Syrup", "Sok Ananasowy"], en: ["Whiskey", "Passion Fruit Syrup", "Pineapple juice"] }, category: "whiskey" },
   { name: { pl: "Spiced Apricot", en: "Spiced Apricot" }, ingredients: { pl: ["Wódka smakowa (morelowa)", "Spiced Rum", "Sok czarnej porzeczki"], en: ["Flavored vodka (apricot)", "Spiced Rum", "Blackcurrant juice"] }, category: "vodka" },
   { name: { pl: "Honey Caramel Cream", en: "Honey Caramel Cream" }, ingredients: { pl: ["Likier miodowy", "Likier słony karmel", "Sok z cytryny"], en: ["Honey liqueur", "Salted caramel liqueur", "Lemon juice"] }, category: "liqueur" },
-  { name: { pl: "Cherry Bourbon Smash", en: "Cherry Bourbon Smash" }, ingredients: { pl: ["Bourbon", "Wódka smakowa (wiśniowa)", "Syrop malinowy"], en: ["Bourbon", "Flavored vodka (cherry)", "Raspberry syrup"] }, category: "vodka", "whiskey" },
+  { name: { pl: "Cherry Bourbon Smash", en: "Cherry Bourbon Smash" }, ingredients: { pl: ["Bourbon", "Wódka smakowa (wiśniowa)", "Syrop malinowy"], en: ["Bourbon", "Flavored vodka (cherry)", "Raspberry syrup"] }, category: "vodka" },
   { name: { pl: "Mint Julep", en: "Mint Julep" }, ingredients: { pl: ["Bourbon", "Sok z cytryny", "Świeża mięta"], en: ["Bourbon", "Lemon juice", "Fresh mint leaves"] }, category: "whiskey" },
   { name: { pl: "Mimosa", en: "Mimosa" }, ingredients: { pl: ["Sok pomarańczowy", "Wermut"], en: ["Orange juice", "Vermouth"] }, category: "liqueur" },
   { name: { pl: "Tom Collins", en: "Tom Collins" }, ingredients: { pl: ["Gin", "Sok z cytryny", "Syrop cukrowy", "Woda gazowana"], en: ["Gin", "Lemon juice", "Simple syrup", "Sparkling water"] }, category: "gin" },
@@ -36,7 +36,7 @@ const cocktails = [
   { name: { pl: "Mojito Kokosowe", en: "Coconut Mojito" }, ingredients: { pl: ["Mięta", "Limonka", "Syrop kokosowy", "Woda gazowana"], en: ["Mint leaves", "Lime wedge", "Coconut syrup", "Sparkling water"] }, category: "non_alcoholic" },
   { name: { pl: "Mojito Mango", en: "Mango Mojito" }, ingredients: { pl: ["Mięta", "Limonka", "Syrop mango", "Woda gazowana"], en: ["Mint leaves", "Lime wedge", "Mango syrup", "Sparkling water"] }, category: "non_alcoholic" },
   { name: { pl: "Irishman", en: "Irishman" }, ingredients: { pl: ["Irish Cream", "Whiskey"], en: ["Irish Cream", "Whiskey"] }, category: "liqueur" },
-  { name: { pl: "Gold Rush", en: "Gold Rush" }, ingredients: { pl: ["Whiskey", "Likier miodowy", "Sok z cytryny"], en: ["Whiskey", "Honey liqueur", "Lemon juice"] }, category: "whiskey", "liqueur" },
+  { name: { pl: "Gold Rush", en: "Gold Rush" }, ingredients: { pl: ["Whiskey", "Likier miodowy", "Sok z cytryny"], en: ["Whiskey", "Honey liqueur", "Lemon juice"] }, category: "whiskey" },
   { name: { pl: "The Curious Jackalope", en: "The Curious Jackalope" }, ingredients: { pl: ["Gin", "Sok z limonki", "Sok grejpfrutowy", "Syrop cukrowy"], en: ["Gin", "Lime juice", "Grapefruit juice", "Simple syrup"] }, category: "gin" },
   { name: { pl: "Old Fashioned", en: "Old Fashioned" }, ingredients: { pl: ["Bourbon", "Syrop cukrowy", "Angostura bitters"], en: ["Bourbon", "Simple syrup", "Angostura bitters"] }, category: "whiskey" },
   { name: { pl: "Old Virginia Manhattan", en: "Old Manhattan" }, ingredients: { pl: ["Bourbon", "Martini Bianco", "Angostura bitters"], en: ["Bourbon", "Martini Bianco", "Angostura bitters"] }, category: "whiskey" }
