@@ -1,4 +1,3 @@
-
 let language = 'pl';
 let currentCategory = 'all';
 
@@ -56,20 +55,23 @@ function renderCategories() {
 }
 
 function renderCocktails() {
-    const container = document.getElementById('cocktail-list');
-    container.innerHTML = '';
-    const filtered = cocktails.filter(c => currentCategory === 'all' || c.category === currentCategory);
-    filtered.forEach(c => {
-        const div = document.createElement('div');
-        div.className = 'cocktail-card';
-        const name = document.createElement('h2');
-        name.textContent = c.name[language];
-        div.appendChild(name);
-        c.ingredients[language].forEach(ing => {
-    const p = document.createElement("p");
-    p.textContent = ing;
-    div.appendChild(p);
+  const container = document.getElementById('cocktail-list');
+  container.innerHTML = '';
+  const filtered = cocktails.filter(c => currentCategory === 'all' || c.category === currentCategory);
+  filtered.forEach(c => {
+    const div = document.createElement('div');
+    div.className = 'cocktail-card';
+    const name = document.createElement('h2');
+    name.textContent = c.name[language];
+    div.appendChild(name);
+    c.ingredients[language].forEach(ing => {
+      const p = document.createElement('p');
+      p.textContent = ing;
+      div.appendChild(p);
+    });
+    container.appendChild(div);
   });
+});
         container.appendChild(div);
     });
 }
