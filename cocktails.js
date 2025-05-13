@@ -1,67 +1,156 @@
-
 const cocktails = [
-  {
-    name: { pl: "Mimosa", en: "Mimosa" },
-    ingredients: {
-      pl: ["Sok pomarańczowy", "Wermut"],
-      en: ["Orange juice", "Vermouth"]
+    {
+        "name": {
+            "pl": "Mimosa",
+            "en": "Mimosa"
+        },
+        "ingredients": {
+            "pl": [
+                "Sok pomarańczowy",
+                "Wermut"
+            ],
+            "en": [
+                "Orange juice",
+                "Vermouth"
+            ]
+        },
+        "category": "liqueur"
     },
-    category: "liqueur"
-  },
-  {
-    name: { pl: "Irishman", en: "Irishman" },
-    ingredients: {
-      pl: ["Irish Cream", "Whiskey"],
-      en: ["Irish Cream", "Whiskey"]
+    {
+        "name": {
+            "pl": "Irishman",
+            "en": "Irishman"
+        },
+        "ingredients": {
+            "pl": [
+                "Irish Cream",
+                "Whiskey"
+            ],
+            "en": [
+                "Irish Cream",
+                "Whiskey"
+            ]
+        },
+        "category": "whiskey"
     },
-    category: "whiskey"
-  },
-  {
-    name: { pl: "Old Fashioned", en: "Old Fashioned" },
-    ingredients: {
-      pl: ["Bourbon", "Cukier", "Angostura"],
-      en: ["Bourbon", "Sugar", "Angostura"]
+    {
+        "name": {
+            "pl": "Gold Rush",
+            "en": "Gold Rush"
+        },
+        "ingredients": {
+            "pl": [
+                "Whiskey",
+                "Likier miodowy",
+                "Sok z cytryny"
+            ],
+            "en": [
+                "Whiskey",
+                "Honey liqueur",
+                "Lemon juice"
+            ]
+        },
+        "category": "whiskey"
     },
-    category: "whiskey"
-  },
-  {
-    name: { pl: "Blue Orange Whiskey Sour", en: "Blue Orange Whiskey Sour" },
-    ingredients: {
-      pl: ["Whiskey", "Syrop blue curacao", "Syrop cukrowy", "Sok z cytryny"],
-      en: ["Whiskey", "Blue curacao syrup", "Sugar syrup", "Lemon juice"]
+    {
+        "name": {
+            "pl": "Old Manhattan",
+            "en": "Old Manhattan"
+        },
+        "ingredients": {
+            "pl": [
+                "Bourbon",
+                "Wermut",
+                "Angostura"
+            ],
+            "en": [
+                "Bourbon",
+                "Vermouth",
+                "Angostura"
+            ]
+        },
+        "category": "whiskey"
     },
-    category: "whiskey"
-  }
-
-  {
-    name: { pl: "Sharlotka", en: "Sharlotka" },
-    ingredients: {
-      pl: ['Wódka', 'Sok jabłkowy', 'Syrop waniliowy', 'Sok z cytryny'],
-      en: ['Vodka', 'Apple juice', 'Vanilla syrup', 'Lemon juice']
+    {
+        "name": {
+            "pl": "Blue Orange Whiskey Sour",
+            "en": "Blue Orange Whiskey Sour"
+        },
+        "ingredients": {
+            "pl": [
+                "Whiskey",
+                "Syrop blue curacao",
+                "Syrop cukrowy",
+                "Sok z cytryny"
+            ],
+            "en": [
+                "Whiskey",
+                "Blue curacao syrup",
+                "Sugar syrup",
+                "Lemon juice"
+            ]
+        },
+        "category": "whiskey"
     },
-    category: "vodka"
-  },
-  {
-    name: { pl: "Gold Rush", en: "Gold Rush" },
-    ingredients: {
-      pl: ['Whiskey', 'Krupnik', 'Sok z cytryny'],
-      en: ['Whiskey', 'Honey liqueur', 'Lemon juice']
+    {
+        "name": {
+            "pl": "The Curious Jackalope",
+            "en": "The Curious Jackalope"
+        },
+        "ingredients": {
+            "pl": [
+                "Gin",
+                "Sok z limonki",
+                "Sok grejpfrutowy",
+                "Syrop cukrowy"
+            ],
+            "en": [
+                "Gin",
+                "Lime juice",
+                "Grapefruit juice",
+                "Sugar syrup"
+            ]
+        },
+        "category": "gin"
     },
-    category: "whiskey"
-  },
-  {
-    name: { pl: "Old Virginia Manhattan", en: "Old Virginia Manhattan" },
-    ingredients: {
-      pl: ['Bourbon', 'Martini Bianco', 'Angostura'],
-      en: ['Bourbon', 'Martini Bianco', 'Angostura']
+    {
+        "name": {
+            "pl": "Old Fashioned",
+            "en": "Old Fashioned"
+        },
+        "ingredients": {
+            "pl": [
+                "Bourbon",
+                "Cukier",
+                "Angostura"
+            ],
+            "en": [
+                "Bourbon",
+                "Sugar",
+                "Angostura"
+            ]
+        },
+        "category": "whiskey"
     },
-    category: "whiskey"
-  },
-  {
-    name: { pl: "The Curious Jackalope", en: "The Curious Jackalope" },
-    ingredients: {
-      pl: ['Gin', 'Sok z limonki', 'Sok grejpfrutowy', 'Syrop cukrowy'],
-      en: ['Gin', 'Lime juice', 'Grapefruit juice', 'Sugar syrup']
-    },
-    category: "gin"
-  },];
+    {
+        "name": {
+            "pl": "Szarlotka",
+            "en": "Sharlotka"
+        },
+        "ingredients": {
+            "pl": [
+                "Wódka",
+                "Sok jabłkowy",
+                "Syrop waniliowy",
+                "Sok z cytryny"
+            ],
+            "en": [
+                "Vodka",
+                "Apple juice",
+                "Vanilla syrup",
+                "Lemon juice"
+            ]
+        },
+        "category": "vodka"
+    }
+];
