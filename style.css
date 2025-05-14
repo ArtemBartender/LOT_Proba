@@ -1,18 +1,73 @@
-body {
-  font-family: Calibri, sans-serif;
-  background: linear-gradient(to bottom, #001f4d, #003366);
-  color: white;
-  text-align: center;
+@font-face {
+  font-family: "LOT";
+  src: url("fonts/LOT-Regular.woff2") format("woff2"),
+       url("fonts/LOT-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "LOT";
+  src: url("fonts/LOT-Oblique.woff2") format("woff2"),
+       url("fonts/LOT-Oblique.woff") format("woff");
+  font-weight: 400;
+  font-style: oblique;
+}
+
+:root {
+  --lot-blue: #004B98;
+  --lot-red:  #E2001A;
+  --lot-white: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+body {
+  font-family: "LOT", sans-serif;
+  background: var(--lot-blue);
+  color: var(--lot-white);
+  position: relative;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("images/lot-crane.svg") center bottom no-repeat;
+  background-size: 80%;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: -1;
+}
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: rgba(0,75,152,0.85);
+  backdrop-filter: blur(5px);
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+.site-header .logo img {
+  height: 40px;
+}
 .container {
-  padding: 20px;
+  padding: 100px 2rem 2rem;
+  text-align: center;
+}
+#page-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 .language-switch button,
 .category-switch button {
-  background-color: #a86a3d;
-  color: white;
+  background: var(--lot-red);
+  color: var(--lot-white);
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
@@ -20,16 +75,23 @@ body {
   font-size: 16px;
   cursor: pointer;
 }
+.language-switch button:hover,
+.category-switch button:hover {
+  opacity: 0.8;
+}
 .cocktail-card {
   background-color: rgba(255, 255, 255, 0.05);
   margin: 20px auto;
   padding: 15px;
   border-radius: 10px;
-  width: 80%;
+  width: 90%;
   max-width: 500px;
 }
-footer {
-  margin-top: 40px;
-  font-size: 14px;
-  color: #ffc;
+.site-footer {
+  background: var(--lot-blue);
+  color: var(--lot-white);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+  margin-top: 2rem;
 }
