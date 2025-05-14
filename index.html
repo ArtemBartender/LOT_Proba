@@ -1,29 +1,186 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Menu drinków</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Официальный сайт LOT</title>
+  <link rel="icon" href="/images/lot-crane-favicon.png" type="image/png">
+  <!-- Подключение кастомного шрифта LOT -->
+  <style>
+    @font-face {
+      font-family: "LOT";
+      src: url("/fonts/LOT-Regular.woff2") format("woff2"),
+           url("/fonts/LOT-Regular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "LOT";
+      src: url("/fonts/LOT-Oblique.woff2") format("woff2"),
+           url("/fonts/LOT-Oblique.woff") format("woff");
+      font-weight: 400;
+      font-style: oblique;
+    }
+
+    :root {
+      --lot-blue: #004B98;
+      --lot-red:  #E2001A;
+      --lot-white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "LOT", sans-serif;
+      background: var(--lot-blue);
+      color: var(--lot-white);
+      position: relative;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    /* Фоновый журавль */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("/images/lot-crane.svg") center bottom no-repeat;
+      background-size: 80%;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: -1;
+    }
+    /* Полупрозрачная фиксированная шапка */
+    .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0,75,152,0.85);
+      backdrop-filter: blur(5px);
+      padding: 1rem 2rem;
+      z-index: 1000;
+    }
+    .site-header .logo img {
+      height: 40px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--lot-white);
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      transition: opacity 0.2s;
+    }
+    nav a:hover {
+      opacity: 0.7;
+    }
+    /* Красная полоса под шапкой */
+    .site-header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--lot-red);
+    }
+    /* Основное содержимое страницы */
+    main {
+      padding: 140px 2rem 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    /* Кнопки в стиле LOT */
+    .btn-primary {
+      display: inline-block;
+      background: var(--lot-white);
+      color: var(--lot-blue);
+      border: 2px solid var(--lot-blue);
+      padding: 0.75rem 1.5rem;
+      font-family: "LOT", sans-serif;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--lot-red);
+      color: var(--lot-white);
+    }
+    /* Футер */
+    .site-footer {
+      margin-top: auto;
+      background: var(--lot-blue);
+      color: var(--lot-white);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+    }
+    .site-footer .footer-logo img {
+      height: 36px;
+      margin-bottom: 0.75rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .footer-links a {
+      color: var(--lot-white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: opacity 0.2s;
+    }
+    .footer-links a:hover {
+      opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1 id="page-title">Menu drinków</h1>
-
-    <div class="language-switch">
-      <button onclick="changeLanguage('pl')">PL</button>
-      <button onclick="changeLanguage('en')">EN</button>
+  <header class="site-header">
+    <a href="/" class="logo">
+      <img src="/images/lot-logo.svg" alt="LOT — Polish Airlines">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/flights">Рейсы</a></li>
+        <li><a href="/services">Услуги</a></li>
+        <li><a href="/contact">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Добро пожаловать на официальный сайт LOT</h1>
+    <p>Забронируйте билет, узнайте о спецпредложениях и маршрутах.</p>
+    <a href="/booking" class="btn-primary">Забронировать</a>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <img src="/images/lot-logo-white.svg" alt="LOT">
     </div>
-
-    <div class="category-switch" id="category-buttons"></div>
-    <div class="cocktail-list" id="cocktail-list"></div>
-
-<footer>
-  <p id="footer-text">
-    <a href="https://survey2.medallia.eu/?LotBusinessLounge&Salonik=0">Najlepszym podziękowaniem będzie Twoja opinia.</a>
-  </p>
-</footer>
-  <script src="cocktails.js"></script>
-  <script src="script.js"></script>
+    <p>© 2025 Polskie Linie Lotnicze LOT. Официальный сайт.</p>
+    <ul class="footer-links">
+      <li><a href="/privacy">Политика конфиденциальности</a></li>
+      <li><a href="/terms">Условия использования</a></li>
+    </ul>
+  </footer>
 </body>
 </html>
