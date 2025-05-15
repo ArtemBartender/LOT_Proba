@@ -2,8 +2,10 @@
 body {
   font-family: Calibri, sans-serif;
   background-image: url('icons/LOT_Tło_sky.png');
-  background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat;        /* не делаем тайл */ 
+  background-position: center center;  /* центрируем */
+  background-size: cover;              /* масштабируем, сохраняя пропорции, чтобы закрыть весь экран */
+  background-attachment: fixed;        /* фиксируем фон относительно окна, не скроллится */
   /* можно оставить цвет-заполнитель, пока картинка грузится: */
   background-color: #003366;
   color: #222;
