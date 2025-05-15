@@ -14,7 +14,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;              /* высота шапки */
+  height: 60px;               /* высота шапки */
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   display: flex;
@@ -25,24 +25,25 @@ body {
 
 /* Логотип внутри шапки */
 .header-logo {
-  height: 40px;              /* подгоните по необходимости */
+  height: 40px;               /* подберите по своему дизайну */
   width: auto;
   margin-right: 12px;
 }
 
-/* Текст заголовка в шапке */
+/* Заголовок в шапке */
 .site-header h2 {
   margin: 0;
+  color: #001f4d;
   font-size: 1.25rem;
   font-weight: 500;
 }
 
-/* Контейнер с учётом пространства под шапку */
+/* Основной контейнер с учётом пространства под шапку */
 .container {
-  padding: 80px 20px 20px;   /* 60px шапки + 20px отступ сверху, 20px по бокам и снизу */
+  padding: 80px 20px 20px;    /* 60px (шапка) + 20px сверху, 20px по бокам и снизу */
 }
 
-/* Стили переключателей */
+/* Стили переключателей языков и категорий */
 .language-switch button,
 .category-switch button {
   background-color: #a86a3d;
@@ -55,7 +56,7 @@ body {
   cursor: pointer;
 }
 
-/* Карточки коктейлей */
+/* Стили карточек коктейлей */
 .cocktail-card {
   background-color: rgba(255, 255, 255, 0.05);
   margin: 20px auto;
@@ -71,3 +72,4 @@ footer {
   font-size: 14px;
   color: #ffc;
 }
+
