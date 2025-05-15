@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="pl">
 <head>
-  <link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#ffffff">
-<link rel="icon" href="./icons/favicon.ico" type="image/x-icon">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Menu Koktajli LOT">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  
-  <!-- Заголовок страницы -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Заголовок окна при standalone -->
   <title>Menu Koktajli LOT</title>
-  
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="style.css" />
+
   <!-- PWA-манифест -->
-  <link rel="manifest" href="/manifest.json">
-  
-  <!-- Цвет темы -->
+  <link rel="manifest" href="./manifest.json">
+
+  <!-- Иконка (favicon) -->
+  <link rel="icon" href="./icons/favicon.ico" type="image/x-icon">
+
+  <!-- Цвет темы для Android -->
   <meta name="theme-color" content="#ffffff">
-  
-  <!-- Для iOS web-app -->
+
+  <!-- Для iOS: запуск как Web App и заголовок -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Menu Koktajli LOT">
 </head>
 <body>
-  <!-- … ваш контент … -->
   <div class="container">
     <h1 id="page-title">Menu drinków</h1>
 
@@ -40,15 +40,18 @@
     </footer>
   </div>
 
+  <!-- JS -->
   <script src="cocktails.js"></script>
   <script src="script.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .register('./sw.js')
-      .then(() => console.log('SW registered'))
-      .catch(err => console.error('SW failed:', err));
-  }
-</script>
+
+  <!-- Регистрация Service Worker для PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('./sw.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(err => console.error('Service Worker failed:', err));
+    }
+  </script>
 </body>
 </html>
