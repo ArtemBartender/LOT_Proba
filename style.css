@@ -1,7 +1,11 @@
 /* Общие стили страницы */
 body {
   font-family: Calibri, sans-serif;
-  background: linear-gradient(to bottom, #ffffff, #ffffff);
+  background-image: url('images/LOT_Tło.png');
+  background-size: cover;
+  background-position: center;
+  /* можно оставить цвет-заполнитель, пока картинка грузится: */
+  background-color: #003366;
   color: #222;
   text-align: center;
   margin: 0;
