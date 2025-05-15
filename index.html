@@ -3,250 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Menu drinków – LOT</title>
-  <link rel="icon" href="images/lot-crane-favicon.png" type="image/png">
-
-  <!-- INLINE CSS -->
-  <style>
-    @font-face {
-      font-family: "LOT";
-      src: url("fonts/LOT-Regular.woff2") format("woff2"),
-           url("fonts/LOT-Regular.woff") format("woff");
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "LOT";
-      src: url("fonts/LOT-Oblique.woff2") format("woff2"),
-           url("fonts/LOT-Oblique.woff") format("woff");
-      font-weight: 400;
-      font-style: oblique;
-    }
-
-    :root {
-      --lot-blue: #004B98;
-      --lot-red:  #E2001A;
-      --lot-white: #FFFFFF;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: "LOT", sans-serif;
-      background: var(--lot-blue);
-      color: var(--lot-white);
-      position: relative;
-      min-height: 100vh;
-      line-height: 1.5;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url("images/lot-crane.svg") center bottom no-repeat;
-      background-size: 80%;
-      opacity: 0.08;
-      pointer-events: none;
-      z-index: -1;
-    }
-    .site-header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      background: rgba(0,75,152,0.85);
-      backdrop-filter: blur(5px);
-      padding: 1rem 2rem;
-      z-index: 1000;
-    }
-    .site-header .logo img {
-      height: 40px;
-    }
-    .container {
-      padding: 100px 2rem 2rem;
-      text-align: center;
-    }
-    #page-title {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    /* Флаги вместо текста */
-    .language-switch {
-      margin-bottom: 1rem;
-    }
-    .language-switch button {
-      background: transparent;
-      border: none;
-      padding: 0 5px;
-      cursor: pointer;
-    }
-    .flag-icon {
-      width: 32px;
-      height: auto;
-      display: block;
-    }
-    .category-switch button {
-      background: var(--lot-red);
-      color: var(--lot-white);
-      border: none;
-      border-radius: 20px;
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .category-switch button:hover,
-    .language-switch button:hover {
-      opacity: 0.8;
-    }
-    .cocktail-card {
-      background-color: rgba(255, 255, 255, 0.05);
-      margin: 20px auto;
-      padding: 15px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 500px;
-    }
-    .site-footer {
-      background: var(--lot-blue);
-      color: var(--lot-white);
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.85rem;
-      margin-top: 2rem;
-    }
-  </style>
+  <title>Menu drinków</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <header class="site-header">
-    <a href="/" class="logo">
-      <img src="images/lot-logo.svg" alt="LOT – Polish Airlines">
-    </a>
-    <div class="language-switch">
-      <button onclick="changeLanguage('pl')">
-        <img src="images/flags/pl.svg" alt="PL" class="flag-icon">
-      </button>
-      <button onclick="changeLanguage('en')">
-        <img src="images/flags/gb.svg" alt="EN" class="flag-icon">
-      </button>
-    </div>
-  </header>
-
-  <main class="container">
+  <div class="container">
     <h1 id="page-title">Menu drinków</h1>
+
+    <div class="language-switch">
+      <button onclick="changeLanguage('pl')">PL</button>
+      <button onclick="changeLanguage('en')">EN</button>
+    </div>
+
     <div class="category-switch" id="category-buttons"></div>
     <div class="cocktail-list" id="cocktail-list"></div>
-  </main>
 
-  <footer class="site-footer">
-    <p>© 2025 Polskie Linie Lotnicze LOT. Official site. Najlepszym podziękowaniem będzie Twoja opinia.</p>
-  </footer>
+    <footer>
+      <p id="footer-text">Najlepszym podziękowaniem będzie Twoja opinia.</p>
+    </footer>
+  </div>
 
-  <!-- INLINE COCKTAILS DATA -->
-  <script>
-    const cocktails = [
-      { name: { pl: "Blue Orange Whiskey Sour", en: "Blue Orange Whiskey Sour" },
-        ingredients: { pl: ["Whiskey", "Blue Curacao Syrup", "Simple syrup", "Lemon juice"],
-                       en: ["Whiskey", "Blue Curacao Syrup", "Simple syrup", "Lemon juice"] },
-        category: "whiskey" },
-      { name: { pl: "Blue Lagoon", en: "Blue Lagoon" },
-        ingredients: { pl: ["Vodka", "Blue Curacao Syrup", "Sparkling water"],
-                       en: ["Vodka", "Blue Curacao Syrup", "Sparkling water"] },
-        category: "gin" },
-      /* … (другие коктейли из cocktails.js) … */
-      { name: { pl: "Old Virginia Manhattan", en: "Old Manhattan" },
-        ingredients: { pl: ["Bourbon", "Martini Bianco", "Angostura bitters"],
-                       en: ["Bourbon", "Martini Bianco", "Angostura bitters"] },
-        category: "whiskey" }
-    ];
-  </script>
-
-  <!-- INLINE SCRIPT LOGIC -->
-  <script>
-    let language = 'pl';
-    let currentCategory = 'all';
-
-    const translations = {
-      pl: {
-        title: "Menu drinków",
-        footer: "Najlepszym podziękowaniem będzie Twoja opinia.",
-        categories: {
-          all: "Wszystkie",
-          vodka: "Wódka",
-          whiskey: "Whiskey & Bourbon",
-          rum: "Rum",
-          liqueur: "Likier",
-          gin: "Gin",
-          non_alcoholic: "Bezalkoholowe"
-        }
-      },
-      en: {
-        title: "Drink menu",
-        footer: "Your feedback is the best reward.",
-        categories: {
-          all: "All",
-          vodka: "Vodka",
-          whiskey: "Whiskey & Bourbon",
-          rum: "Rum",
-          liqueur: "Liqueur",
-          gin: "Gin",
-          non_alcoholic: "Non-alcoholic"
-        }
-      }
-    };
-
-    function renderCategoryButtons() {
-      const container = document.getElementById('category-buttons');
-      container.innerHTML = '';
-      Object.keys(translations[language].categories).forEach(cat => {
-        const btn = document.createElement('button');
-        btn.textContent = translations[language].categories[cat];
-        btn.onclick = () => {
-          currentCategory = cat;
-          renderCocktails();
-        };
-        container.appendChild(btn);
-      });
-    }
-
-    function renderCocktails() {
-      const list = document.getElementById('cocktail-list');
-      list.innerHTML = '';
-      cocktails
-        .filter(c => currentCategory === 'all' || c.category === currentCategory)
-        .forEach(c => {
-          const card = document.createElement('div');
-          card.className = 'cocktail-card';
-          const nameEl = document.createElement('h2');
-          nameEl.textContent = c.name[language];
-          card.appendChild(nameEl);
-          c.ingredients[language].forEach(ing => {
-            const p = document.createElement('p');
-            p.textContent = ing;
-            card.appendChild(p);
-          });
-          list.appendChild(card);
-        });
-    }
-
-    function changeLanguage(lang) {
-      language = lang;
-      document.getElementById('page-title').textContent = translations[lang].title;
-      document.querySelector('.site-footer p').textContent = (lang === 'pl'
-        ? "© 2025 Polskie Linie Lotnicze LOT. Najlepszym podziękowaniem będzie Twoja opinia."
-        : "© 2025 Polskie Linie Lotnicze LOT. Your feedback is the best reward.");
-      renderCategoryButtons();
-      renderCocktails();
-    }
-
-    window.onload = () => {
-      changeLanguage(language);
-    };
-  </script>
+  <script src="cocktails.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
