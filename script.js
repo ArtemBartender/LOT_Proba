@@ -3,7 +3,7 @@ let currentCategory = 'all';
 
 const translations = {
   pl: {
-    header:    "Menu drinków LOT",           // Шапка
+    header:    "Menu drinków",           // Шапка
     title:     "Menu drinków",               // <title> и #page-title
     footer:    "Najlepszym podziękowaniem będzie Twoja opinia.",
     categories: {
@@ -17,7 +17,7 @@ const translations = {
     }
   },
   en: {
-    header:    "LOT Cocktail Menu",
+    header:    "Cocktail Menu",
     title:     "Cocktail Menu",
     footer:    "The best thank you is your opinion.",
     categories: {
