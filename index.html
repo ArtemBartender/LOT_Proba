@@ -5,65 +5,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Заголовок окна при standalone -->
-  <title>Menu Koktajli</title>
+  <title>Menu Koktajli LOT</title>
 
-  <!-- Стили -->
+  <!-- Подключаем стили -->
   <link rel="stylesheet" href="style.css" />
 
   <!-- PWA-манифест -->
   <link rel="manifest" href="./manifest.json">
 
-  <!-- Иконка (favicon) -->
+  <!-- favicon -->
   <link rel="icon" href="./icons/favicon.ico" type="image/x-icon">
 
-  <!-- Цвет темы для Android -->
+  <!-- Цвет темы -->
   <meta name="theme-color" content="#ffffff">
-
-  <!-- Для iOS: запуск как Web App и заголовок -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Menu Koktajli LOT">
 </head>
 <body>
 
-  <!-- Фиксированная шапка -->
+  <!-- ========== Фиксированная шапка ========== -->
   <header class="site-header">
+    <!-- Логотип LOT -->
     <img src="icons/LOT_logo.png" alt="Logo LOT" class="header-logo">
-    <h2>Ważne, z kim podróżujesz</h2>
-  </header>
 
+    <!-- Основной текст шапки -->
+    <h2 class="header-title">Ważne, z kim podróżujesz</h2>
+
+    <!-- Переключатель языка в правом углу -->
+    <div class="language-switch">
+      <!-- Кнопка PL с изображением флага -->
+      <button onclick="changeLanguage('pl')" aria-label="Polski">
+        <img src="icons/Flag_PL.png" alt="PL" class="flag-icon">
+      </button>
+      <!-- Кнопка EN с изображением флага -->
+      <button onclick="changeLanguage('en')" aria-label="English">
+        <img src="icons/Flag_EN.png" alt="EN" class="flag-icon">
+      </button>
+    </div>
+  </header>
+  <!-- ========================================= -->
+
+  <!-- Основной контент, сдвинут вниз под шапку -->
   <div class="container">
     <h1 id="page-title">Menu drinków</h1>
 
-    <div class="language-switch">
-      <button onclick="changeLanguage('pl')">PL</button>
-      <button onclick="changeLanguage('en')">EN</button>
-    </div>
+    <!-- Убрали старый language-switch из сюда -->
 
     <div class="category-switch" id="category-buttons"></div>
     <div class="cocktail-list" id="cocktail-list"></div>
 
     <footer>
-      <p id="footer-text" style="cursor: pointer; color: inherit; text-decoration: none;">
+      <p id="footer-text" style="cursor: pointer;">
         Najlepszym podziękowaniem będzie Twoja opinia.
       </p>
     </footer>
   </div>
 
-  <!-- JS -->
+  <!-- Подключаем JS -->
   <script src="cocktails.js"></script>
   <script src="script.js"></script>
 
-  <!-- Регистрация Service Worker для PWA -->
+  <!-- Регистрация Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
         .register('./sw.js')
-        .then(() => console.log('Service Worker registered'))
-        .catch(err => console.error('Service Worker failed:', err));
+        .then(() => console.log('SW registered'))
+        .catch(err => console.error('SW failed:', err));
     }
   </script>
 
-  <!-- Обработчик клика по футеру -->
+  <!-- Клик по футеру открывает форму отзывов -->
   <script>
     document.getElementById('footer-text').addEventListener('click', () => {
       window.open(
@@ -75,4 +87,3 @@
   </script>
 </body>
 </html>
-
