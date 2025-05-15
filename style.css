@@ -1,3 +1,4 @@
+/* Общие стили страницы */
 body {
   font-family: Calibri, sans-serif;
   background: linear-gradient(to bottom, #001f4d, #003366);
@@ -6,9 +7,42 @@ body {
   margin: 0;
   padding: 0;
 }
-.container {
-  padding: 20px;
+
+/* Фиксированная шапка */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;              /* высота шапки */
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 1000;
 }
+
+/* Логотип внутри шапки */
+.header-logo {
+  height: 40px;              /* подгоните по необходимости */
+  width: auto;
+  margin-right: 12px;
+}
+
+/* Текст заголовка в шапке */
+.site-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Контейнер с учётом пространства под шапку */
+.container {
+  padding: 80px 20px 20px;   /* 60px шапки + 20px отступ сверху, 20px по бокам и снизу */
+}
+
+/* Стили переключателей */
 .language-switch button,
 .category-switch button {
   background-color: #a86a3d;
@@ -20,6 +54,8 @@ body {
   font-size: 16px;
   cursor: pointer;
 }
+
+/* Карточки коктейлей */
 .cocktail-card {
   background-color: rgba(255, 255, 255, 0.05);
   margin: 20px auto;
@@ -28,6 +64,8 @@ body {
   width: 80%;
   max-width: 500px;
 }
+
+/* Стили футера */
 footer {
   margin-top: 40px;
   font-size: 14px;
