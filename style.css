@@ -1,6 +1,8 @@
 /* ================= Общие стили ================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
 body {
-  font-family: Calibri, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-image: url('icons/LOT_Tło_sky.png');
   background-repeat: no-repeat;
   background-position: center center;
