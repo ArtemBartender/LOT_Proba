@@ -87,6 +87,7 @@ body {
 
 /* =============== Переключатели категорий =============== */
 .category-switch button {
+  font-family: 'Montserrat', sans-serif;
   background-color: #2A2D64;
   color: white;
   border: none;
