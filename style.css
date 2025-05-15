@@ -1,60 +1,81 @@
-/* Общие стили страницы */
+/* ================= Общие стили ================= */
 body {
   font-family: Calibri, sans-serif;
   background-image: url('icons/LOT_Tło_sky.png');
-  background-repeat: no-repeat;        /* не делаем тайл */ 
-  background-position: center center;  /* центрируем */
-  background-size: cover;              /* масштабируем, сохраняя пропорции, чтобы закрыть весь экран */
-  background-attachment: fixed;        /* фиксируем фон относительно окна, не скроллится */
-  /* можно оставить цвет-заполнитель, пока картинка грузится: */
-  background-color: #003366;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #003366;  /* пока картинка грузится */
   color: #222;
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
-/* Фиксированная шапка */
+/* ================= Фиксированная шапка ================= */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;               /* высота шапки */
+  height: 60px;             
+  /* возвращаем фон-рисунок в шапку */
   background-image: url('icons/LOT_Tło_sky.png');
+  background-repeat: no-repeat;
+  background-position: center top;
   background-size: cover;
-  background-position: center;
-  /* можно оставить цвет-заполнитель, пока картинка грузится: */
-  background-color: #003366;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  /* опционально: если хотите, чтобы фон шапки тоже не двигался при скролле */
+  background-attachment: fixed;
+  
   display: flex;
+  justify-content: space-between; /* логотип слева, переключатель справа */
   align-items: center;
   padding: 0 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 1000;
 }
 
 /* Логотип внутри шапки */
 .header-logo {
-  height: 40px;               /* подберите по своему дизайну */
+  height: 40px;
   width: auto;
   margin-right: 12px;
 }
 
-/* Заголовок в шапке */
+/* Текст заголовка в шапке */
 .site-header h2 {
   margin: 0;
-  color: #001f4d;
+  color: white;
   font-size: 1.25rem;
   font-weight: 500;
 }
 
-/* Основной контейнер с учётом пространства под шапку */
-.container {
-  padding: 80px 20px 20px;    /* 60px (шапка) + 20px сверху, 20px по бокам и снизу */
+/* Переключатель языка (флаги) */
+.language-switch {
+  display: flex;
+  gap: 8px;     
 }
 
-/* Стили переключателей языков и категорий */
-.language-switch button,
+.language-switch button {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.flag-icon {
+  display: block;
+  height: 24px;
+  width: auto;
+}
+
+/* ================= Контейнер под шапку ================= */
+.container {
+  padding: 80px 20px 20px;   /* 60px шапка + 20px сверху */
+}
+
+/* =============== Переключатели категорий =============== */
 .category-switch button {
   background-color: #2A2D64;
   color: white;
@@ -66,7 +87,7 @@ body {
   cursor: pointer;
 }
 
-/* Стили карточек коктейлей */
+/* ================= Карточки коктейлей ================= */
 .cocktail-card {
   background-color: rgba(255, 255, 255, 0.5);
   margin: 20px auto;
@@ -76,10 +97,9 @@ body {
   max-width: 500px;
 }
 
-/* Стили футера */
+/* ==================== Футер ==================== */
 footer {
   margin-top: 40px;
   font-size: 14px;
   color: #ffc;
 }
-
