@@ -3,29 +3,31 @@ let currentCategory = 'all';
 
 const translations = {
   pl: {
-    title: "Menu drinków",
-    footer: "Najlepszym podziękowaniem będzie Twoja opinia.",
+    header:    "Menu drinków LOT",           // Шапка
+    title:     "Menu drinków",               // <title> и #page-title
+    footer:    "Najlepszym podziękowaniem będzie Twoja opinia.",
     categories: {
-      all: "Wszystkie",
-      vodka: "Wódka",
-      whiskey: "Whiskey & Bourbon",
-      rum: "Rum",
-      liqueur: "Likier",
-      gin: "Gin",
-      non_alcoholic: "Bezalkoholowe"
+      all:             "Wszystkie",
+      vodka:           "Wódka",
+      whiskey:         "Whiskey & Bourbon",
+      rum:             "Rum",
+      liqueur:         "Likier",
+      gin:             "Gin",
+      non_alcoholic:   "Bezalkoholowe"
     }
   },
   en: {
-    title: "Cocktail Menu",
-    footer: "The best thank you is your opinion.",
+    header:    "LOT Cocktail Menu",
+    title:     "Cocktail Menu",
+    footer:    "The best thank you is your opinion.",
     categories: {
-      all: "All",
-      vodka: "Vodka",
-      whiskey: "Whiskey & Bourbon",
-      rum: "Rum",
-      liqueur: "Liqueur",
-      gin: "Gin",
-      non_alcoholic: "Non-alcoholic"
+      all:             "All",
+      vodka:           "Vodka",
+      whiskey:         "Whiskey & Bourbon",
+      rum:             "Rum",
+      liqueur:         "Liqueur",
+      gin:             "Gin",
+      non_alcoholic:   "Non-alcoholic"
     }
   }
 };
@@ -33,9 +35,17 @@ const translations = {
 function changeLanguage(lang) {
   language = lang;
   document.documentElement.lang = lang;
+
+  // заголовок вкладки и #page-title
   document.title = translations[lang].title;
   document.getElementById("page-title").textContent = translations[lang].title;
+
+  // текст в шапке
+  document.querySelector(".site-header h2").textContent = translations[lang].header;
+
+  // футер
   document.getElementById("footer-text").textContent = translations[lang].footer;
+
   renderCategories();
   renderCocktails();
 }
@@ -76,4 +86,5 @@ function renderCocktails() {
   });
 }
 
+// при загрузке сразу рендерим на текущем языке
 window.onload = () => changeLanguage(language);
