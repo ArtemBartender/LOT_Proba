@@ -36,10 +36,8 @@
     <div class="cocktail-list" id="cocktail-list"></div>
 
     <footer>
-      <p id="footer-text">
-        <a href="https://survey2.medallia.eu/?LotBusinessLounge&Salonik=0" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-          Najlepszym podziękowaniem będzie Twoja opinia.
-        </a>
+      <p id="footer-text" style="cursor: pointer; color: inherit; text-decoration: none;">
+        Najlepszym podziękowaniem będzie Twoja opinia.
       </p>
     </footer>
   </div>
@@ -56,6 +54,17 @@
         .then(() => console.log('Service Worker registered'))
         .catch(err => console.error('Service Worker failed:', err));
     }
+  </script>
+
+  <!-- Обработчик клика по футеру -->
+  <script>
+    document.getElementById('footer-text').addEventListener('click', () => {
+      window.open(
+        'https://survey2.medallia.eu/?LotBusinessLounge&Salonik=0',
+        '_blank',
+        'noopener'
+      );
+    });
   </script>
 </body>
 </html>
