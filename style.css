@@ -53,10 +53,13 @@ body {
 
 /* Переключатель языка (флаги) */
 .language-switch {
-  display: flex;
-  gap: 8px;     
+  /* добавим отступ от правого края */
+  margin-right: 40px;
+   display: flex;
+  /* поднимем/опустим флаги внутри шапки */
+  position: relative;
+  top: 4px;    /* + вниз, − вверх */
 }
-
 .language-switch button {
   background: transparent;
   border: none;
