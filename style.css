@@ -1,7 +1,7 @@
 /* Общие стили страницы */
 body {
   font-family: Calibri, sans-serif;
-  background-image: url('images/LOT_Tło.png');
+  background-image: url('icons/LOT_Tło.png');
   background-size: cover;
   background-position: center;
   /* можно оставить цвет-заполнитель, пока картинка грузится: */
