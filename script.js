@@ -82,11 +82,11 @@ function renderCocktails() {
     front.className = "card-front";
 
     // картинка коктейля
-    const img = document.createElement("img");
-    img.src = c.image;
-    img.alt = c.name[language];
-    img.className = "cocktail-img";
-    front.appendChild(img);
+    //const img = document.createElement("img");
+    //img.src = c.image;
+    //img.alt = c.name[language];
+    //img.className = "cocktail-img";
+    //front.appendChild(img);
 
     // название
     const nameEl = document.createElement("h2");
