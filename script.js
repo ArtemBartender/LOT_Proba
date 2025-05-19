@@ -65,33 +65,49 @@ function renderCategories() {
 function renderCocktails() {
   const container = document.getElementById("cocktail-list");
   container.innerHTML = "";
+
   const filtered = cocktails.filter(c =>
     currentCategory === 'all' || c.category === currentCategory
   );
+
   filtered.forEach(c => {
+    // карточка-контейнер
     const card = document.createElement("div");
     card.className = "cocktail-card";
-    card.addEventListener("click", () => card.classList.toggle("expanded"));
 
+    // внутренняя обёртка для 3D-флипа
+    const inner = document.createElement("div");
+    inner.className = "card-inner";
+
+    // передняя сторона
     const front = document.createElement("div");
     front.className = "card-front";
-    const nameEl = document.createElement("h2");
-    nameEl.textContent = c.name[language];
-    front.appendChild(nameEl);
+    const title = document.createElement("h2");
+    title.textContent = c.name[language];
+    front.appendChild(title);
     c.ingredients[language].forEach(ing => {
       const p = document.createElement("p");
       p.textContent = ing;
       front.appendChild(p);
     });
 
+    // задняя сторона
     const back = document.createElement("div");
     back.className = "card-back";
     const desc = document.createElement("p");
     desc.textContent = c.description[language];
     back.appendChild(desc);
 
-    card.append(front, back);
+    // собираем карточку
+    inner.appendChild(front);
+    inner.appendChild(back);
+    card.appendChild(inner);
     container.appendChild(card);
+
+    // по клику — флипнём
+    card.addEventListener("click", () => {
+      card.classList.toggle("flipped");
+    });
   });
 }
 
@@ -107,31 +123,39 @@ document.getElementById('surprise-btn').addEventListener('click', () => {
 
   const card = document.createElement("div");
   card.className = "cocktail-card";
-  card.addEventListener("click", () => card.classList.toggle("expanded"));
 
+  const inner = document.createElement("div");
+  inner.className = "card-inner";
+
+  // front
   const front = document.createElement("div");
   front.className = "card-front";
-  const nameEl = document.createElement("h2");
-  nameEl.textContent = pick.name[language];
-  front.appendChild(nameEl);
+  const title = document.createElement("h2");
+  title.textContent = pick.name[language];
+  front.appendChild(title);
   pick.ingredients[language].forEach(ing => {
     const p = document.createElement("p");
     p.textContent = ing;
     front.appendChild(p);
   });
 
+  // back
   const back = document.createElement("div");
   back.className = "card-back";
   const desc = document.createElement("p");
   desc.textContent = pick.description[language];
   back.appendChild(desc);
 
-  card.append(front, back);
+  inner.append(front, back);
+  card.appendChild(inner);
   container.appendChild(card);
+
+  card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
+  });
+
   card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
-
-window.onload = () => changeLanguage(language);
 
 // инициализация при загрузке
 window.onload = () => changeLanguage(language);
