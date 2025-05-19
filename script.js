@@ -3,31 +3,31 @@ let currentCategory = 'all';
 
 const translations = {
   pl: {
-    header:    "Ważne, z kim podróżujesz",           // Шапка
-    title:     "Menu drinków",                       // <title> и #page-title
-    footer:    "Najlepszym podziękowaniem będzie Twoja opinia.",
+    header:  "Ważne, z kim podróżujesz",      // Шапка
+    title:   "Menu drinków",                  // <title> и #page-title
+    footer:  "Najlepszym podziękowaniem będzie Twoja opinia.",
     categories: {
-      all:             "Wszystkie",
-      vodka:           "Wódka",
-      whiskey:         "Whiskey & Bourbon",
-      rum:             "Rum",
-      liqueur:         "Likier",
-      gin:             "Gin",
-      non_alcoholic:   "Bezalkoholowe"
+      all:           "Wszystkie",
+      vodka:         "Wódka",
+      whiskey:       "Whiskey & Bourbon",
+      rum:           "Rum",
+      liqueur:       "Likier",
+      gin:           "Gin",
+      non_alcoholic: "Bezalkoholowe"
     }
   },
   en: {
-    header:    "It matters who you’re traveling with.",
-    title:     "Cocktail Menu",
-    footer:    "The best thank you is your opinion.",
+    header:  "It matters who you’re traveling with.",
+    title:   "Cocktail Menu",
+    footer:  "The best thank you is your opinion.",
     categories: {
-      all:             "All",
-      vodka:           "Vodka",
-      whiskey:         "Whiskey & Bourbon",
-      rum:             "Rum",
-      liqueur:         "Liqueur",
-      gin:             "Gin",
-      non_alcoholic:   "Non-alcoholic"
+      all:           "All",
+      vodka:         "Vodka",
+      whiskey:       "Whiskey & Bourbon",
+      rum:           "Rum",
+      liqueur:       "Liqueur",
+      gin:           "Gin",
+      non_alcoholic: "Non-alcoholic"
     }
   }
 };
@@ -73,15 +73,11 @@ function renderCocktails() {
   );
 
   filtered.forEach(c => {
-    // карточка-контейнер с перспективой
+    // сам контейнер карточки
     const card = document.createElement("div");
     card.className = "cocktail-card";
 
-    // внутренняя область для 3D-вращения
-    const inner = document.createElement("div");
-    inner.className = "card-inner";
-
-    // передняя сторона
+    // ПЕРЕДНЯЯ СТОРОНА: имя + ингредиенты
     const front = document.createElement("div");
     front.className = "card-front";
     const nameEl = document.createElement("h2");
@@ -93,26 +89,24 @@ function renderCocktails() {
       front.appendChild(p);
     });
 
-    // задняя сторона
+    // ЗАДНЯЯ СТОРОНА: описание
     const back = document.createElement("div");
     back.className = "card-back";
     const desc = document.createElement("p");
     desc.textContent = c.description[language];
     back.appendChild(desc);
 
-    // собираем структуру
-    inner.appendChild(front);
-    inner.appendChild(back);
-    card.appendChild(inner);
-
-    // кликом переворачиваем карточку
+    // Клик toggles expanded
     card.addEventListener("click", () => {
-      card.classList.toggle("flipped");
+      card.classList.toggle("expanded");
     });
 
+    // Собираем карточку
+    card.appendChild(front);
+    card.appendChild(back);
     container.appendChild(card);
   });
 }
 
-// при загрузке сразу рендерим на текущем языке
+// инициализация при загрузке
 window.onload = () => changeLanguage(language);
