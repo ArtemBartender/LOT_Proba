@@ -4,7 +4,7 @@ let currentCategory = 'all';
 const translations = {
   pl: {
     header:    "Ważne, z kim podróżujesz",           // Шапка
-    title:     "Menu drinków",               // <title> и #page-title
+    title:     "Menu drinków",                       // <title> и #page-title
     footer:    "Najlepszym podziękowaniem będzie Twoja opinia.",
     categories: {
       all:             "Wszystkie",
@@ -72,14 +72,27 @@ function renderCocktails() {
     const card = document.createElement("div");
     card.className = "cocktail-card";
 
+    // Название
     const nameEl = document.createElement("h2");
     nameEl.textContent = c.name[language];
     card.appendChild(nameEl);
 
+    // Ингредиенты
     c.ingredients[language].forEach(ing => {
       const p = document.createElement("p");
       p.textContent = ing;
       card.appendChild(p);
+    });
+
+    // Краткое описание (скрыто по умолчанию)
+    const desc = document.createElement("p");
+    desc.className = "cocktail-desc";
+    desc.textContent = c.description[language];
+    card.appendChild(desc);
+
+    // По клику раскрываем/скрываем описание
+    card.addEventListener("click", () => {
+      card.classList.toggle("expanded");
     });
 
     container.appendChild(card);
