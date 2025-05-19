@@ -8,7 +8,7 @@ body {
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
-  background-color: #003366;  /* пока картинка грузится */
+  background-color: #003366; /* пока картинка грузится */
   color: #222;
   text-align: center;
   margin: 0;
@@ -21,14 +21,12 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;             
+  height: 60px;
   background-image: url('icons/LOT_Tło_sky.png');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-  /* опционально: если хотите, чтобы фон шапки тоже не двигался при скролле */
-  background-attachment: fixed;
-  
+  background-attachment: fixed; /* фиксируем фон шапки */
   display: flex;
   justify-content: space-between; /* логотип слева, переключатель справа */
   align-items: center;
@@ -49,21 +47,17 @@ body {
   margin: 0;
   color: white;
   font-size: 1.25rem;
-  font-weight: 320;
+  font-weight: 600; /* корректный вес Montserrat */
 }
 
 /* Переключатель языка (флаги) */
 .language-switch {
-  /* добавим отступ от правого края */
-  margin-right: 55px;
-   display: flex;
-  /* поднимем/опустим флаги внутри шапки */
+  display: flex;
+  align-items: center;
+  gap: 10px;           /* расстояние между флагами */
+  margin-right: 40px;  /* сдвиг от правого края */
   position: relative;
-  top: 4px;    /* + вниз, − вверх */
-}
-
-.flag-icon {
-  margin-left: 10px;  /* пространство между флагами */
+  top: 4px;            /* вертикальный сдвиг */
 }
 
 .language-switch button {
@@ -81,7 +75,7 @@ body {
 
 /* ================= Контейнер под шапку ================= */
 .container {
-  padding: 80px 20px 20px;   /* 60px шапка + 20px сверху */
+  padding: 80px 20px 20px; /* 60px шапка + 20px отступ сверху */
 }
 
 /* =============== Переключатели категорий =============== */
@@ -105,6 +99,26 @@ body {
   border-radius: 10px;
   width: 80%;
   max-width: 500px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.cocktail-card:hover {
+  transform: translateY(-4px);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* описание скрыто по умолчанию */
+.cocktail-desc {
+  display: none;
+  margin-top: 8px;
+  font-style: italic;
+  color: #001f4d;
+}
+
+/* показываем описание при клике */
+.cocktail-card.expanded .cocktail-desc {
+  display: block;
 }
 
 /* ==================== Футер ==================== */
