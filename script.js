@@ -71,47 +71,55 @@ function renderCocktails() {
   );
 
   filtered.forEach(c => {
-    // карточка-контейнер
     const card = document.createElement("div");
     card.className = "cocktail-card";
 
-    // внутренняя обёртка для 3D-флипа
     const inner = document.createElement("div");
     inner.className = "card-inner";
 
-    // передняя сторона
+    // — передняя сторона —
     const front = document.createElement("div");
     front.className = "card-front";
-    const title = document.createElement("h2");
-    title.textContent = c.name[language];
-    front.appendChild(title);
+
+    // картинка коктейля
+    const img = document.createElement("img");
+    img.src = c.image;
+    img.alt = c.name[language];
+    img.className = "cocktail-img";
+    front.appendChild(img);
+
+    // название
+    const nameEl = document.createElement("h2");
+    nameEl.textContent = c.name[language];
+    front.appendChild(nameEl);
+
+    // ингредиенты
     c.ingredients[language].forEach(ing => {
       const p = document.createElement("p");
       p.textContent = ing;
       front.appendChild(p);
     });
 
-    // задняя сторона
+    // — задняя сторона —
     const back = document.createElement("div");
     back.className = "card-back";
     const desc = document.createElement("p");
     desc.textContent = c.description[language];
     back.appendChild(desc);
 
-    // собираем карточку
-    inner.appendChild(front);
-    inner.appendChild(back);
+    // собираем
+    inner.append(front, back);
     card.appendChild(inner);
     container.appendChild(card);
 
-    // по клику — флипнём
+    // клик — 3D-флип
     card.addEventListener("click", () => {
       card.classList.toggle("flipped");
     });
   });
 }
 
-// Сюрприз
+// обработчик кнопки «Сюрприз»
 document.getElementById('surprise-btn').addEventListener('click', () => {
   const pool = cocktails.filter(c =>
     currentCategory === 'all' || c.category === currentCategory
@@ -130,9 +138,17 @@ document.getElementById('surprise-btn').addEventListener('click', () => {
   // front
   const front = document.createElement("div");
   front.className = "card-front";
-  const title = document.createElement("h2");
-  title.textContent = pick.name[language];
-  front.appendChild(title);
+
+  const img = document.createElement("img");
+  img.src = pick.image;
+  img.alt = pick.name[language];
+  img.className = "cocktail-img";
+  front.appendChild(img);
+
+  const nameEl = document.createElement("h2");
+  nameEl.textContent = pick.name[language];
+  front.appendChild(nameEl);
+
   pick.ingredients[language].forEach(ing => {
     const p = document.createElement("p");
     p.textContent = ing;
@@ -156,6 +172,9 @@ document.getElementById('surprise-btn').addEventListener('click', () => {
 
   card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
+
+// инициализация при загрузке
+window.onload = () => changeLanguage(language);
 
 // инициализация при загрузке
 window.onload = () => changeLanguage(language);
