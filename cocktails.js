@@ -490,6 +490,116 @@ const cocktails = [
       pl: "Wersja Manhattan z bourbonem i eleganckim wermutem biało.",
       en: "A Manhattan-style cocktail with bourbon and elegant bianco vermouth."
     }
+  },
+  // ——— Новый раздел: Piwo / Beer ———
+const beerItems = [
+  {
+    name: { 
+      pl: "Iguana (bezalkoholowe)", 
+      en: "Iguana (non-alcoholic)" 
+    },
+    ingredients: {
+      pl: ["Woda", "Słód jęczmienny", "Błonnik", "Aminokwasy", "Chmiel"],
+      en: ["Water", "Barley malt", "Fiber", "Amino acids", "Hops"]
+    },
+    category: "beer",
+    description: {
+      pl: "Lekko gazowane, orzeźwiające piwo bezalkoholowe z dodatkiem błonnika i aminokwasów.",
+      en: "A lightly carbonated, refreshing non-alcoholic beer enriched with fiber and amino acids."
+    }
+  },
+  {
+    name: { 
+      pl: "Trybunał Lemon (0,0%)", 
+      en: "Trybunał Lemon (0.0%)" 
+    },
+    ingredients: {
+      pl: ["Woda", "Słód jęczmienny", "Chmiel", "Skórka cytryny", "Pszenica"],
+      en: ["Water", "Barley malt", "Hops", "Lemon peel", "Wheat"]
+    },
+    category: "beer",
+    description: {
+      pl: "Świeża nuta cytryny na bazie jasnego lagera — idealne orzeźwienie bez alkoholu.",
+      en: "A bright lager base with a fresh lemon twist — perfect alcohol-free refreshment."
+    }
+  },
+  {
+    name: { 
+      pl: "Trybunał Export", 
+      en: "Trybunał Export" 
+    },
+    ingredients: {
+      pl: ["Woda", "Słód jęczmienny", "Chmiel"],
+      en: ["Water", "Barley malt", "Hops"]
+    },
+    category: "beer",
+    description: {
+      pl: "Pełne ciało, wyraźna goryczka i klasyczna niemiecka receptura.",
+      en: "Full-bodied with pronounced bitterness, crafted in a classic German style."
+    }
+  },
+  {
+    name: { 
+      pl: "Trybunał Zero (0,5%)", 
+      en: "Trybunał Zero (0.5%)" 
+    },
+    ingredients: {
+      pl: ["Woda", "Słód jęczmienny", "Chmiel"],
+      en: ["Water", "Barley malt", "Hops"]
+    },
+    category: "beer",
+    description: {
+      pl: "Łagodne, niskoalkoholowe piwo o zbalansowanym smaku i gładkim finiszu.",
+      en: "A mild, low-alcohol beer with a balanced taste and smooth finish."
+    }
+  },
+  {
+    name: { 
+      pl: "Żywiec", 
+      en: "Żywiec" 
+    },
+    ingredients: {
+      pl: ["Woda", "Słód jęczmienny", "Chmiel"],
+      en: ["Water", "Barley malt", "Hops"]
+    },
+    category: "beer",
+    description: {
+      pl: "Klasyczny polski lager z wyczuwalną nutą słodową i łagodną goryczką.",
+      en: "A classic Polish lager with noticeable malt notes and a gentle bitterness."
+    }
+  },
+  {
+    name: { 
+      pl: "Heineken", 
+      en: "Heineken" 
+    },
+    ingredients: {
+      pl: ["Woda", "Słód jęczmienny", "Chmiel Saaz"],
+      en: ["Water", "Barley malt", "Saaz hops"]
+    },
+    category: "beer",
+    description: {
+      pl: "Ikoniczne, gładkie piwo o wyważonym profilu chmielowym.",
+      en: "Iconic smooth beer with a well-balanced hop profile."
+    }
+  },
+  {
+    name: { 
+      pl: "Cydr Klasyczny", 
+      en: "Classic Cider" 
+    },
+    ingredients: {
+      pl: ["Woda", "Sok jabłkowy", "Drożdże"],
+      en: ["Water", "Apple juice", "Yeast"]
+    },
+    category: "beer", // traktujemy cydr jako podkategorię piwa
+    description: {
+      pl: "Delikatnie musujący, półwytrawny cydr z naturalną słodyczą jabłek.",
+      en: "Lightly sparkling, semi-dry cider with the natural sweetness of apples."
+    }
   }
 ];
+
+// Добавляем в основной массив:
+cocktails.push(...beerItems);
 
