@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 body {
-  position: relative;        /* нужно для псевдо-элемента */
+  position: relative;
   font-family: 'Montserrat', sans-serif;
-  /* сам body теперь без фоновой картинки: оставляем только цвет */
   background-color: #003366;
   color: #222;
   text-align: center;
@@ -12,19 +11,17 @@ body {
   z-index: 0;
 }
 
-/* псевдо-элемент с фоновой картинкой */
 body::before {
   content: "";
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: url('icons/LOT_Tło_3.jpg') center/cover no-repeat;
-  filter: blur(8px);           /* вот оно размытие */
-  transform: scale(1.05);      /* подправим, чтобы края не были видны */
-  z-index: -1;                 /* отправляем за контент */
+  filter: blur(8px);
+  transform: scale(1.05);
+  z-index: -1;
 }
 
-/* Шапка */
 .site-header {
   position: fixed; top: 0; left: 0;
   width: 100%; height: 60px;
@@ -46,12 +43,10 @@ body::before {
 }
 .flag-icon { height: 24px; width: auto; }
 
-/* Контейнер под шапку */
 .container {
-  padding: 80px 20px 20px; /* 60px шапка + 20px сверху */
+  padding: 80px 20px 20px;
 }
 
-/* Переключатели категорий */
 .category-switch button {
   font-family: 'Montserrat', sans-serif;
   background-color: #2A2D64; color: white;
@@ -60,8 +55,6 @@ body::before {
   font-size: 16px; cursor: pointer;
 }
 
-/* Карточки коктейлей / 3D-флип через Grid */
-/* контейнер с перспективой */
 .cocktail-card {
   width: 80%; max-width: 500px;
   margin: 20px auto;
@@ -73,7 +66,6 @@ body::before {
   transform: translateY(-4px);
 }
 
-/* внутренняя обёртка, которую вращаем */
 .card-inner {
   display: grid;
   grid-template-areas: "frontback";
@@ -81,12 +73,10 @@ body::before {
   transition: transform 0.6s ease;
 }
 
-/* при клике добавляем класс .flipped к .cocktail-card */
 .cocktail-card.flipped .card-inner {
   transform: rotateY(180deg);
 }
 
-/* обе стороны накладываются друг на друга */
 .card-front,
 .card-back {
   grid-area: frontback;
@@ -97,22 +87,21 @@ body::before {
   background-color: rgba(0,31,77,0.07);
 }
 
-/* лицевая сторона: картинка + текст */
+/* Изображение над названием */
 .card-front {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* стили для картинки коктейля */
 .cocktail-img {
   width: 100px;
   height: auto;
   border-radius: 8px;
-  margin-right: 15px;
+  margin-bottom: 15px;
   object-fit: cover;
 }
 
-/* обратная сторона */
 .card-back {
   transform: rotateY(180deg);
   background-color: rgba(0,31,77,0.07);
@@ -123,7 +112,6 @@ body::before {
   color: #001f4d;
 }
 
-/* Кнопка «Сюрприз» */
 .surprise-btn {
   font-family: 'Montserrat', sans-serif;
   background-color: #a86a3d;
@@ -136,7 +124,6 @@ body::before {
   background-color: #8b5831;
 }
 
-/* Футер */
 footer {
   margin-top: 40px;
   font-size: 16px;
