@@ -9,7 +9,8 @@ const cocktails = [
     description: {
       pl: "Soczysta eksplozja cytrusów z lekko dymnym finiszem whiskey — prawdziwa orzeźwiająca przygoda.",
       en: "A juicy citrus explosion with a smoky whiskey finish — the ultimate refreshing adventure."
-    }
+    },
+    image: "drinks/blue-sour.jpg"
   },
   {
     name: { pl: "Blue Lagoon", en: "Blue Lagoon" },
