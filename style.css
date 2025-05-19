@@ -2,6 +2,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  /* background: url('icons/LOT_Tło_sky.png') center/cover fixed #003366; */ /*Стереть если захотим фон картинкой*/
   color: #222;
   text-align: center;
   margin: 0;
