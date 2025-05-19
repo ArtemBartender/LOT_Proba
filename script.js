@@ -3,8 +3,8 @@ let currentCategory = 'all';
 
 const translations = {
   pl: {
-    header:  "Ważne, z kim podróżujesz",      // Шапка
-    title:   "Menu drinków",                  // <title> и #page-title
+    header:  "Ważne, z kim podróżujesz",
+    title:   "Menu drinków",
     footer:  "Najlepszym podziękowaniem będzie Twoja opinia.",
     categories: {
       all:           "Wszystkie",
@@ -35,17 +35,10 @@ const translations = {
 function changeLanguage(lang) {
   language = lang;
   document.documentElement.lang = lang;
-
-  // заголовок вкладки и #page-title
   document.title = translations[lang].title;
   document.getElementById("page-title").textContent = translations[lang].title;
-
-  // текст в шапке
   document.querySelector(".site-header h2").textContent = translations[lang].header;
-
-  // футер
   document.getElementById("footer-text").textContent = translations[lang].footer;
-
   renderCategories();
   renderCocktails();
 }
@@ -67,44 +60,48 @@ function renderCategories() {
 function renderCocktails() {
   const container = document.getElementById("cocktail-list");
   container.innerHTML = "";
-
   const filtered = cocktails.filter(c =>
     currentCategory === 'all' || c.category === currentCategory
   );
 
   filtered.forEach(c => {
-    // сам контейнер карточки
+    // основной контейнер карточки
     const card = document.createElement("div");
     card.className = "cocktail-card";
 
-    // ПЕРЕДНЯЯ СТОРОНА: имя + ингредиенты
+    // внутренняя обёртка для 3D-флипа
+    const inner = document.createElement("div");
+    inner.className = "card-inner";
+
+    // передняя сторона: название + ингредиенты
     const front = document.createElement("div");
     front.className = "card-front";
-    const nameEl = document.createElement("h2");
-    nameEl.textContent = c.name[language];
-    front.appendChild(nameEl);
+    const title = document.createElement("h2");
+    title.textContent = c.name[language];
+    front.appendChild(title);
     c.ingredients[language].forEach(ing => {
       const p = document.createElement("p");
       p.textContent = ing;
       front.appendChild(p);
     });
 
-    // ЗАДНЯЯ СТОРОНА: описание
+    // задняя сторона: описание
     const back = document.createElement("div");
     back.className = "card-back";
     const desc = document.createElement("p");
     desc.textContent = c.description[language];
     back.appendChild(desc);
 
-    // Клик toggles expanded
-    card.addEventListener("click", () => {
-      card.classList.toggle("expanded");
-    });
-
-    // Собираем карточку
-    card.appendChild(front);
-    card.appendChild(back);
+    // собираем карточку
+    inner.appendChild(front);
+    inner.appendChild(back);
+    card.appendChild(inner);
     container.appendChild(card);
+
+    // по клику — плавный 3D-флип
+    card.addEventListener("click", () => {
+      card.classList.toggle("flipped");
+    });
   });
 }
 
