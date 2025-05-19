@@ -67,32 +67,47 @@ function renderCategories() {
 function renderCocktails() {
   const container = document.getElementById("cocktail-list");
   container.innerHTML = "";
-  const filtered = cocktails.filter(c => currentCategory === 'all' || c.category === currentCategory);
+
+  const filtered = cocktails.filter(c =>
+    currentCategory === 'all' || c.category === currentCategory
+  );
+
   filtered.forEach(c => {
+    // карточка-контейнер с перспективой
     const card = document.createElement("div");
     card.className = "cocktail-card";
 
-    // Название
+    // внутренняя область для 3D-вращения
+    const inner = document.createElement("div");
+    inner.className = "card-inner";
+
+    // передняя сторона
+    const front = document.createElement("div");
+    front.className = "card-front";
     const nameEl = document.createElement("h2");
     nameEl.textContent = c.name[language];
-    card.appendChild(nameEl);
-
-    // Ингредиенты
+    front.appendChild(nameEl);
     c.ingredients[language].forEach(ing => {
       const p = document.createElement("p");
       p.textContent = ing;
-      card.appendChild(p);
+      front.appendChild(p);
     });
 
-    // Краткое описание (скрыто по умолчанию)
+    // задняя сторона
+    const back = document.createElement("div");
+    back.className = "card-back";
     const desc = document.createElement("p");
-    desc.className = "cocktail-desc";
     desc.textContent = c.description[language];
-    card.appendChild(desc);
+    back.appendChild(desc);
 
-    // По клику раскрываем/скрываем описание
+    // собираем структуру
+    inner.appendChild(front);
+    inner.appendChild(back);
+    card.appendChild(inner);
+
+    // кликом переворачиваем карточку
     card.addEventListener("click", () => {
-      card.classList.toggle("expanded");
+      card.classList.toggle("flipped");
     });
 
     container.appendChild(card);
