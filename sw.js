@@ -6,6 +6,7 @@ const ASSETS = [
   './script.js',
   './cocktails.js',
   './manifest.json',
+  // Если эти файлы у вас действительно есть – оставьте, иначе можно закомментировать/удалить
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/favicon.ico'
@@ -14,7 +15,14 @@ const ASSETS = [
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(ASSETS))
+      .then(cache =>
+        cache.addAll(ASSETS)
+          .catch(err => {
+            console.warn('ServiceWorker: некоторые ресурсы не закэшировались:', err);
+            // Для гарантии возвращаем промис, чтобы установка не зависла:
+            return Promise.resolve();
+          })
+      )
       .then(() => self.skipWaiting())
   );
 });
