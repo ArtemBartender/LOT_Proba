@@ -113,13 +113,13 @@ body::before {
 }
 
 .card-front h2 {
-  color: #c97222; /* например тёмно-синий */
+  color: #f0ffff; /* например тёмно-синий */
   margin: 0 0 10px;
 }
 
 /* Цвет текста ингредиентов */
 .card-front p {
-  color: #c97222; /* например насыщенный синий */
+  color: #f0ffff; /* например насыщенный синий */
   margin: 2px 0;
 }
 .surprise-btn {
