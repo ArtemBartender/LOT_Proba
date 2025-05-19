@@ -491,8 +491,6 @@ const cocktails = [
       en: "A Manhattan-style cocktail with bourbon and elegant bianco vermouth."
     }
   },
-  // ——— Новый раздел: Piwo / Beer ———
-const beerItems = [
   {
     name: { 
       pl: "Iguana (bezalkoholowe)", 
@@ -599,7 +597,3 @@ const beerItems = [
     }
   }
 ];
-
-// Добавляем в основной массив:
-cocktails.push(...beerItems);
-
