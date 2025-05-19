@@ -6,7 +6,7 @@ const translations = {
     header:      "Ważne, z kim podróżujesz",
     title:       "Menu drinków",
     footer:      "Najlepszym podziękowaniem będzie Twoja opinia.",
-    surprise:    "Сюрpriz мне кокtajль",
+    surprise:    "Zaskocz mnie koktajlem",
     categories: {
       all:           "Wszystkie",
       vodka:         "Wódka",
