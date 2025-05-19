@@ -1,4 +1,3 @@
-/* ================= Общие стили ================= */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 body {
@@ -6,122 +5,72 @@ body {
   background: url('icons/LOT_Tło_sky.png') center/cover fixed #003366;
   color: #222;
   text-align: center;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
 }
 
-/* ================= Фиксированная шапка ================= */
+/* Шапка */
 .site-header {
-  position: fixed;
-  top: 0; left: 0;
+  position: fixed; top: 0; left: 0;
   width: 100%; height: 60px;
   background: url('icons/LOT_Tło_sky.png') center top/cover fixed;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 0 16px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 1000;
+  padding: 0 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 1000;
 }
-.header-logo {
-  height: 40px;
-  margin-right: 12px;
-}
+.header-logo { height: 40px; margin-right: 12px; }
 .site-header h2 {
-  margin: 0;
-  color: white;
-  font-size: 1.25rem;
-  font-weight: 600;
+  margin: 0; color: white; font-size: 1.25rem; font-weight: 600;
 }
 .language-switch {
   display: flex; align-items: center; gap: 10px;
   margin-right: 40px; position: relative; top: 4px;
 }
-.language-switch button {
-  background: transparent;
-  border: none;
-  padding: 4px;
-  cursor: pointer;
-}
-.flag-icon {
-  height: 24px;
-  width: auto;
-}
+.language-switch button { background: transparent; border: none; padding: 4px; cursor: pointer; }
+.flag-icon { height: 24px; width: auto; }
 
-/* ================= Контейнер под шапку ================= */
-.container {
-  padding: 80px 20px 20px; /* 60px шапка + 20px отступ сверху */
-}
+/* Контейнер */
+.container { padding: 80px 20px 20px; }
 
-/* =============== Переключатели категорий =============== */
+/* Переключатели категорий */
 .category-switch button {
   font-family: 'Montserrat', sans-serif;
-  background-color: #2A2D64;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  margin: 5px;
-  font-size: 16px;
-  cursor: pointer;
+  background-color: #2A2D64; color: white;
+  border: none; border-radius: 20px;
+  padding: 10px 20px; margin: 5px;
+  font-size: 16px; cursor: pointer;
 }
 
-/* ================= Карточки коктейлей — базовые стили ================= */
+/* Карточки коктейлей */
 .cocktail-card {
-  width: 80%;
-  max-width: 500px;
-  margin: 20px auto;
   background-color: rgba(255,255,255,0.5);
-  border-radius: 10px;
-  cursor: pointer;
-  perspective: 1000px;           /* для 3D */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: transform 0.2s, background-color 0.2s;
+  margin: 20px auto; padding: 15px;
+  border-radius: 10px; width: 80%; max-width: 500px;
+  cursor: pointer; transition: background-color .2s, transform .2s;
 }
 .cocktail-card:hover {
   transform: translateY(-4px);
   background-color: rgba(255,255,255,0.7);
 }
-
-/* ================= Карточки коктейлей — 3D-флип через Grid ================= */
-.card-inner {
-  display: grid;
-  grid-template-areas: "frontback";
-  transform-style: preserve-3d;
-  transition: transform 0.6s ease;
-}
-
-/* при клике добавляем .flipped к .cocktail-card */
-.cocktail-card.flipped .card-inner {
-  transform: rotateY(180deg);
-}
-
-/* обе стороны накладываются в одну ячейку */
-.card-front,
+.card-front { display: block; }
 .card-back {
-  grid-area: frontback;
-  backface-visibility: hidden;
-  border-radius: 10px;
-  padding: 15px;
-  box-sizing: border-box;
-  background-color: rgba(255,255,255,0.6);
+  display: none; margin-top: 8px;
+  font-style: italic; color: #001f4d;
+}
+.cocktail-card.expanded .card-front { display: none; }
+.cocktail-card.expanded .card-back  { display: block; }
+
+/* Кнопка «Сюрприз» */
+.surprise-btn {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #a86a3d;
+  color: white; border: none; border-radius: 20px;
+  padding: 10px 20px; margin: 10px 0 20px;
+  font-size: 16px; cursor: pointer; transition: background-color .2s;
+}
+.surprise-btn:hover {
+  background-color: #8b5831;
 }
 
-/* лицевая сторона (по умолчанию видима) */
-.card-front {
-  /* дополнительные hover-стили, если нужны */
-}
-
-/* обратная сторона */
-.card-back {
-  transform: rotateY(180deg);
-  background-color: rgba(255,255,255,0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-style: italic;
-  color: #001f4d;
-}
-
-/* ==================== Футер ==================== */
+/* Футер */
 footer {
   margin-top: 40px;
   font-size: 16px;
