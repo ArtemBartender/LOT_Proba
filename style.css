@@ -26,9 +26,9 @@ body {
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-  background-attachment: fixed; /* фиксируем фон шапки */
+  background-attachment: fixed;
   display: flex;
-  justify-content: space-between; /* логотип слева, переключатель справа */
+  justify-content: space-between;
   align-items: center;
   padding: 0 16px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -47,17 +47,17 @@ body {
   margin: 0;
   color: white;
   font-size: 1.25rem;
-  font-weight: 600; /* корректный вес Montserrat */
+  font-weight: 600;
 }
 
 /* Переключатель языка (флаги) */
 .language-switch {
   display: flex;
   align-items: center;
-  gap: 10px;           /* расстояние между флагами */
-  margin-right: 40px;  /* сдвиг от правого края */
+  gap: 10px;
+  margin-right: 40px;
   position: relative;
-  top: 4px;            /* вертикальный сдвиг */
+  top: 4px;
 }
 
 .language-switch button {
@@ -92,33 +92,60 @@ body {
 }
 
 /* ================= Карточки коктейлей ================= */
+/* контейнер для перспективы */
 .cocktail-card {
-  background-color: rgba(255, 255, 255, 0.5);
-  margin: 20px auto;
-  padding: 15px;
-  border-radius: 10px;
   width: 80%;
   max-width: 500px;
+  margin: 20px auto;
+  perspective: 1000px;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
 }
 
-.cocktail-card:hover {
-  transform: translateY(-4px);
-  background-color: rgba(255, 255, 255, 0.7);
+/* вращающаяся внутренняя часть */
+.card-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
 }
 
-/* описание скрыто по умолчанию */
-.cocktail-desc {
-  display: none;
-  margin-top: 8px;
+/* при .flipped — переворот на 180° */
+.cocktail-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* лицевая и обратная стороны */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* лицевая сторона */
+.card-front {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* обратная сторона */
+.card-back {
+  transform: rotateY(180deg);
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-style: italic;
   color: #001f4d;
 }
 
-/* показываем описание при клике */
-.cocktail-card.expanded .cocktail-desc {
-  display: block;
+/* hover-эффект при наведении */
+.cocktail-card:hover .card-inner {
+  transform: translateY(-4px);
 }
 
 /* ==================== Футер ==================== */
