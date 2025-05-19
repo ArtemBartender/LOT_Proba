@@ -13,8 +13,8 @@ const translations = {
       rum:           "Rum",
       liqueur:       "Likier",
       gin:           "Gin",
-      non_alcoholic: "Bezalkoholowe"
-      beer:            "Piwo"
+      non_alcoholic: "Bezalkoholowe",
+      beer:          "Piwo"
     }
   },
   en: {
@@ -28,7 +28,7 @@ const translations = {
       rum:           "Rum",
       liqueur:       "Liqueur",
       gin:           "Gin",
-      non_alcoholic: "Non-alcoholic"
+      non_alcoholic: "Non-alcoholic",
       beer:            "Beer"             
     }
   }
