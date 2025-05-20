@@ -11,6 +11,11 @@ body {
   z-index: 0;
 }
 
+.header-logo-link {
+  display: inline-block;
+  cursor: pointer;
+} 
+
 body::before {
   content: "";
   position: fixed;
