@@ -40,26 +40,18 @@ body::before {
   z-index: 1000;
 }
 
-/* по умолчанию логотип 60px */
-.header-logo {
-  height: 45px;
+/* По умолчанию */
+.site-header .header-logo {
+  height: 40px;
   width: auto;
   margin-right: 16px;
 }
 
-/* на экранах до 600px ширины — уменьшаем логотип */
-@media (max-width: 600px) {
-  .header-logo {
-    height: 30px;
-    margin-right: 12px;
-  }
-}
-
-/* ещё уже — например телефоны до 400px */
-@media (max-width: 400px) {
-  .header-logo {
-    height: 18px;
-    margin-right: 8px;
+/* На экранах до 600px ширины — уменьшаем логотип */
+@media only screen and (max-width: 600px) {
+  .site-header .header-logo {
+    height: 28px !important;
+    margin-right: 8px !important;
   }
 }
 .site-header h2 {
