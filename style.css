@@ -92,6 +92,10 @@ body::before {
   background-color: rgba(42, 45, 100,0.15);
 }
 
+.card-front .cocktail-img {
+  display: none;
+}
+
 /* Изображение над названием
 .card-front {
   display: flex;
