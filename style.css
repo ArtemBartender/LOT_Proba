@@ -40,14 +40,21 @@ body::before {
   z-index: 1000;
 }
 
-.header-logo { height: 40px; margin-right: 12px; }
+.header-logo {
+  height: 65px;    /* увеличили высоту до 60px */
+  width: auto;     /* сохраняем пропорции */
+  margin-right: 16px; /* можно чуть больше отступ, если нужно */
+}
+
 .site-header h2 {
   margin: 0; color: white; font-size: 1.25rem; font-weight: 600;
 }
+
 .language-switch {
   display: flex; align-items: center; gap: 10px;
   margin-right: 40px; position: relative; top: 4px;
 }
+
 .language-switch button {
   background: transparent; border: none; padding: 4px; cursor: pointer;
 }
