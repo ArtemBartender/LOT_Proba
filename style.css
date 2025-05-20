@@ -41,7 +41,7 @@ body::before {
 }
 
 .header-logo {
-  height: 65px;    /* увеличили высоту до 60px */
+  height: 45px;    /* увеличили высоту до 60px */
   width: auto;     /* сохраняем пропорции */
   margin-right: 16px; /* можно чуть больше отступ, если нужно */
 }
