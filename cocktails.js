@@ -203,8 +203,7 @@ const cocktails = [
       en: "A spicy tomato explosion with vodka and spices — the perfect bold start."
     },
     image: "drinks/bloody-mary.jpg"
-  }
-
+  },
   {
     name: { pl: "Martini", en: "Martini" },
     ingredients: {
