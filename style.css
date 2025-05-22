@@ -77,7 +77,7 @@ body::before {
 
 /* Стили для активной категории */
 .category-switch button.active {
-  background-color: #041e42;
+  background-color: #3d4d56;
   color: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
