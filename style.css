@@ -171,3 +171,7 @@ footer {
   font-size: 16px;
   color: #f0ffff;
 }
+
+.header-logo {
+  filter: brightness(0) invert(1);
+}
