@@ -14,7 +14,7 @@ body {
 .header-logo-link {
   display: inline-block;
   cursor: pointer;
-} 
+}
 
 body::before {
   content: "";
@@ -30,8 +30,7 @@ body::before {
 .site-header {
   position: fixed; top: 0; left: 0;
   width: 100%; height: 60px;
-  /* сначала полупрозрачный чёрный, затем картинка */
-  background: 
+  background:
     linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
     url('icons/LOT_Tło_4.png') center top/cover fixed;
   display: flex; justify-content: space-between; align-items: center;
@@ -54,8 +53,12 @@ body::before {
     margin-right: 8px !important;
   }
 }
+
 .site-header h2 {
-  margin: 0; color: white; font-size: 1.25rem; font-weight: 600;
+  margin: 0;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .language-switch {
@@ -72,12 +75,27 @@ body::before {
   padding: 80px 20px 20px;
 }
 
+/* Стили для активной категории */
+.category-switch button.active {
+  background-color: #db620a;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
 .category-switch button {
   font-family: 'Montserrat', sans-serif;
-  background-color: #2A2D64; color: white;
-  border: none; border-radius: 20px;
-  padding: 10px 20px; margin: 5px;
-  font-size: 16px; cursor: pointer;
+  background-color: #2A2D64;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color .2s;
+}
+.category-switch button:hover {
+  background-color: #3b3e7e;
 }
 
 .cocktail-card {
@@ -116,21 +134,6 @@ body::before {
   display: none;
 }
 
-/* Изображение над названием
-.card-front {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.cocktail-img {
-  width: 100px;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  object-fit: cover;
-}
- */
 .card-back {
   transform: rotateY(180deg);
   background-color: rgba(42, 45, 100,0.15);
@@ -142,15 +145,15 @@ body::before {
 }
 
 .card-front h2 {
-  color: #f0ffff; /* например тёмно-синий */
+  color: #f0ffff;
   margin: 0 0 10px;
 }
 
-/* Цвет текста ингредиентов */
 .card-front p {
-  color: #f0ffff; /* например насыщенный синий */
+  color: #f0ffff;
   margin: 2px 0;
 }
+
 .surprise-btn {
   font-family: 'Montserrat', sans-serif;
   background-color: #db620a;
