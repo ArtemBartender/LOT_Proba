@@ -12,6 +12,22 @@ const cocktails = [
     },
     image: "drinks/blue-sour.jpg"
   },
+    {
+    name: { 
+      pl: "Gin & Tonic", 
+      en: "Gin & Tonic" 
+    },
+    ingredients: {
+      pl: ["Gin", "Tonik", "Plasterek limonki"],
+      en: ["Gin", "Tonic water", "Lime wedge"]
+    },
+    category: "gin",
+    description: {
+      pl: "Klasyczny, orzeźwiający miks ginu i toniku ze skórką limonki.",
+      en: "Classic refreshing mix of gin and tonic water with a lime twist."
+    },
+    image: "drinks/gin-tonic.jpg"
+  },
   {
     name: { pl: "Blue Lagoon", en: "Blue Lagoon" },
     ingredients: {
@@ -156,6 +172,39 @@ const cocktails = [
       en: "An elegant blend of vodka and cranberry with subtle citrus hints."
     }
   },
+    {
+    name: { 
+      pl: "Espresso Martini", 
+      en: "Espresso Martini" 
+    },
+    ingredients: {
+      pl: ["Wódka", "Likier mleczny", "Świeże espresso"],
+      en: ["Vodka", "Milk liqueur", "Fresh espresso"]
+    },
+    category: "liqueur",
+    description: {
+      pl: "Energetyczne połączenie intensywnego espresso i likieru w eleganckim drinku.",
+      en: "An energizing blend of rich espresso and liqueur in an elegant cocktail."
+    },
+    image: "drinks/espresso-martini.jpg"
+  },
+  {
+    name: { 
+      pl: "Krwawa Mary", 
+      en: "Bloody Mary" 
+    },
+    ingredients: {
+      pl: ["Wódka", "Sok pomidorowy", "Tabasco", "Sok z cytryny", "Sól i pieprz"],
+      en: ["Vodka", "Tomato juice", "Tabasco", "Lemon juice", "Salt & pepper"]
+    },
+    category: "vodka",
+    description: {
+      pl: "Pikantna eksplozja smaku pomidorów z dodatkiem wódki i przypraw — idealna na mocny start.",
+      en: "A spicy tomato explosion with vodka and spices — the perfect bold start."
+    },
+    image: "drinks/bloody-mary.jpg"
+  }
+
   {
     name: { pl: "Martini", en: "Martini" },
     ingredients: {
