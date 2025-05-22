@@ -77,9 +77,9 @@ body::before {
 
 /* Стили для активной категории */
 .category-switch button.active {
-  background-color: #db620a;
+  background-color: #041e42;
   color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
 .category-switch button {
@@ -95,7 +95,7 @@ body::before {
   transition: background-color .2s;
 }
 .category-switch button:hover {
-  background-color: #3b3e7e;
+  background-color: #3d4d56;
 }
 
 .cocktail-card {
