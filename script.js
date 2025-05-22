@@ -3,7 +3,7 @@ let currentCategory = 'all';
 
 const translations = {
   pl: {
-    header:      "Ważne, z kim podróżujesz",
+    header:      "",
     title:       "Menu drinków",
     footer:      "Najlepszym podziękowaniem będzie Twoja opinia.",
     surprise:    "Zaskocz mnie koktajlem",
@@ -19,7 +19,7 @@ const translations = {
     }
   },
   en: {
-    header:      "It matters who you’re traveling with.",
+    header:      "I",
     title:       "Cocktail Menu",
     footer:      "The best thank you is your opinion.",
     surprise:    "Surprise me a cocktail",
