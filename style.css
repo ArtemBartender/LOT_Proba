@@ -57,29 +57,27 @@ body::before {
   margin-right: 16px;
 }
 
-/* запретим горизонтальный скролл */
-html, body {
-  overflow-x: hidden;
+/* убираем фон у body, переезжаем на html */
+html {
+  /* здесь ваш фон */
+  background: url('icons/LOT_Tlo_4.jpg') center/cover fixed #003366;
+  /* чтобы ни один bounce не «пролезал» */
+  overscroll-behavior: none;
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: none;
+  height: 100%;
 }
 
-/* шапка всегда ровно на ширину вьюпорта */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  /* вместо width:100% ставим 100vw */
-  width: 100vw;
-  height: 60px;
-  /* ваш фон */
-  background:
-    linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
-    url('icons/LOT_Tlo_4.jpg') center top/cover fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 16px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.22);
-  z-index: 1000;
+/* контейнер, в котором будет реальный scroll */
+.scroll-container {
+  height: 100vh;            /* на всю высоту окна */
+  overflow-y: auto;         /* скроллим только его */
+  -webkit-overflow-scrolling: touch; /* плавный скролл на iOS */
+  overscroll-behavior: contain;      /* не даём контейнеру «выпрыгивать» */
 }
 
 /* На экранах до 600px ширины — уменьшаем логотип */
