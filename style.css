@@ -3,7 +3,7 @@
 body {
   position: relative;
   font-family: 'Montserrat', sans-serif;
-  background-color: #8C6F4E;
+  background-color: #413a31;
   color: #f0ffff;
   text-align: center;
   margin: 0;
@@ -42,7 +42,7 @@ html, body {
   background:
     linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
     url('icons/LOT_Tło_4.png') center top/cover fixed;
-  display: flex; justify-content: space-between; align-items: center;
+  display: fixed; justify-content: space-between; align-items: center;
   padding: 0 16px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.22);
   z-index: 1000;
