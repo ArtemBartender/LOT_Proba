@@ -57,6 +57,31 @@ body::before {
   margin-right: 16px;
 }
 
+/* запретим горизонтальный скролл */
+html, body {
+  overflow-x: hidden;
+}
+
+/* шапка всегда ровно на ширину вьюпорта */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* вместо width:100% ставим 100vw */
+  width: 100vw;
+  height: 60px;
+  /* ваш фон */
+  background:
+    linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+    url('icons/LOT_Tlo_4.jpg') center top/cover fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.22);
+  z-index: 1000;
+}
+
 /* На экранах до 600px ширины — уменьшаем логотип */
 @media only screen and (max-width: 600px) {
   .site-header .header-logo {
