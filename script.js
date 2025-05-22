@@ -54,10 +54,15 @@ function renderCategories() {
   Object.entries(translations[language].categories).forEach(([key, label]) => {
     const btn = document.createElement("button");
     btn.textContent = label;
-    btn.onclick = () => {
+    // Добавляем класс active для текущей категории
+    if (key === currentCategory) {
+      btn.classList.add("active");
+    }
+    btn.addEventListener("click", () => {
       currentCategory = key;
+      renderCategories();
       renderCocktails();
-    };
+    });
     container.appendChild(btn);
   });
 }
@@ -81,19 +86,10 @@ function renderCocktails() {
     const front = document.createElement("div");
     front.className = "card-front";
 
-    // картинка коктейля
-    //const img = document.createElement("img");
-    //img.src = c.image;
-    //img.alt = c.name[language];
-    //img.className = "cocktail-img";
-    //front.appendChild(img);
-
-    // название
     const nameEl = document.createElement("h2");
     nameEl.textContent = c.name[language];
     front.appendChild(nameEl);
 
-    // ингредиенты
     c.ingredients[language].forEach(ing => {
       const p = document.createElement("p");
       p.textContent = ing;
@@ -107,12 +103,10 @@ function renderCocktails() {
     desc.textContent = c.description[language];
     back.appendChild(desc);
 
-    // собираем
     inner.append(front, back);
     card.appendChild(inner);
     container.appendChild(card);
 
-    // клик — 3D-флип
     card.addEventListener("click", () => {
       card.classList.toggle("flipped");
     });
@@ -135,15 +129,8 @@ document.getElementById('surprise-btn').addEventListener('click', () => {
   const inner = document.createElement("div");
   inner.className = "card-inner";
 
-  // front
   const front = document.createElement("div");
   front.className = "card-front";
-
-  const img = document.createElement("img");
-  img.src = pick.image;
-  img.alt = pick.name[language];
-  img.className = "cocktail-img";
-  front.appendChild(img);
 
   const nameEl = document.createElement("h2");
   nameEl.textContent = pick.name[language];
@@ -155,7 +142,6 @@ document.getElementById('surprise-btn').addEventListener('click', () => {
     front.appendChild(p);
   });
 
-  // back
   const back = document.createElement("div");
   back.className = "card-back";
   const desc = document.createElement("p");
@@ -172,9 +158,6 @@ document.getElementById('surprise-btn').addEventListener('click', () => {
 
   card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
-
-// инициализация при загрузке
-window.onload = () => changeLanguage(language);
 
 // инициализация при загрузке
 window.onload = () => changeLanguage(language);
