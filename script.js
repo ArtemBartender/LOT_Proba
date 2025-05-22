@@ -19,7 +19,7 @@ const translations = {
     }
   },
   en: {
-    header:      "I",
+    header:      "",
     title:       "Cocktail Menu",
     footer:      "The best thank you is your opinion.",
     surprise:    "Surprise me a cocktail",
@@ -54,10 +54,7 @@ function renderCategories() {
   Object.entries(translations[language].categories).forEach(([key, label]) => {
     const btn = document.createElement("button");
     btn.textContent = label;
-    // Добавляем класс active для текущей категории
-    if (key === currentCategory) {
-      btn.classList.add("active");
-    }
+    if (key === currentCategory) btn.classList.add("active");
     btn.addEventListener("click", () => {
       currentCategory = key;
       renderCategories();
@@ -82,21 +79,19 @@ function renderCocktails() {
     const inner = document.createElement("div");
     inner.className = "card-inner";
 
-    // — передняя сторона —
+    // Front
     const front = document.createElement("div");
     front.className = "card-front";
-
     const nameEl = document.createElement("h2");
     nameEl.textContent = c.name[language];
     front.appendChild(nameEl);
-
     c.ingredients[language].forEach(ing => {
       const p = document.createElement("p");
       p.textContent = ing;
       front.appendChild(p);
     });
 
-    // — задняя сторона —
+    // Back
     const back = document.createElement("div");
     back.className = "card-back";
     const desc = document.createElement("p");
@@ -109,12 +104,21 @@ function renderCocktails() {
 
     card.addEventListener("click", () => {
       card.classList.toggle("flipped");
+      // Track card flips
+      if (typeof gtag === 'function') {
+        gtag('event', 'flip_card', {
+          'event_category': 'engagement',
+          'event_label': c.name[language],
+          'transport_type': 'beacon'
+        });
+      }
     });
   });
 }
 
-// обработчик кнопки «Сюрприз»
-document.getElementById('surprise-btn').addEventListener('click', () => {
+// Surprise button handler
+const surpriseBtn = document.getElementById('surprise-btn');
+surpriseBtn.addEventListener('click', () => {
   const pool = cocktails.filter(c =>
     currentCategory === 'all' || c.category === currentCategory
   );
@@ -125,17 +129,14 @@ document.getElementById('surprise-btn').addEventListener('click', () => {
 
   const card = document.createElement("div");
   card.className = "cocktail-card";
-
   const inner = document.createElement("div");
   inner.className = "card-inner";
 
   const front = document.createElement("div");
   front.className = "card-front";
-
   const nameEl = document.createElement("h2");
   nameEl.textContent = pick.name[language];
   front.appendChild(nameEl);
-
   pick.ingredients[language].forEach(ing => {
     const p = document.createElement("p");
     p.textContent = ing;
@@ -154,10 +155,39 @@ document.getElementById('surprise-btn').addEventListener('click', () => {
 
   card.addEventListener("click", () => {
     card.classList.toggle("flipped");
+    if (typeof gtag === 'function') {
+      gtag('event', 'flip_card', {
+        'event_category': 'engagement',
+        'event_label': pick.name[language],
+        'transport_type': 'beacon'
+      });
+    }
   });
 
   card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  // Track surprise clicks
+  if (typeof gtag === 'function') {
+    gtag('event', 'click', {
+      'event_category': 'engagement',
+      'event_label': 'surprise_button',
+      'transport_type': 'beacon'
+    });
+  }
 });
 
-// инициализация при загрузке
+// Track all link clicks
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (typeof gtag === 'function') {
+      gtag('event', 'click', {
+        'event_category': 'navigation',
+        'event_label': link.href,
+        'transport_type': 'beacon'
+      });
+    }
+  });
+});
+
+// Initialize on load
 window.onload = () => changeLanguage(language);
