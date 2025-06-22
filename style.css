@@ -364,3 +364,125 @@ footer {
   outline: none;
   border-color: #db620a;
 }
+
+:root {
+  --clr-text: #f0ffff;
+  --clr-accent: #db620a;
+  --clr-accent-dark: #8b5831;
+  --radius-md: 8px;
+  --transition: 0.2s;
+}
+
+/* Modal Overlay */
+.feedback-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+.feedback-modal.hidden {
+  display: none;
+}
+
+/* Modal Content */
+.modal-content {
+  background: rgba(42, 45, 100, 0.85);
+  padding: 24px 20px;
+  border-radius: var(--radius-md);
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--clr-text);
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--clr-text);
+}
+
+/* Feedback Form Layout */
+#feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#feedback-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: var(--clr-text);
+}
+
+/* Inputs & Textarea */
+#feedback-form input[type="email"],
+#feedback-form textarea {
+  margin-top: 6px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(240,255,255,0.3);
+  background: rgba(0,0,0,0.5);
+  color: var(--clr-text);
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+#feedback-form input::placeholder,
+#feedback-form textarea::placeholder {
+  color: rgba(240,255,255,0.6);
+}
+
+#feedback-form input:focus,
+#feedback-form textarea:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+  background: rgba(0,0,0,0.6);
+}
+
+/* Send Button */
+.feedback-send {
+  background: var(--clr-accent);
+  color: var(--clr-text);
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition), transform 0.1s;
+}
+.feedback-send:hover {
+  background: var(--clr-accent-dark);
+}
+.feedback-send:active {
+  transform: scale(0.97);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 20px 12px;
+  }
+  #feedback-form {
+    gap: 12px;
+  }
+  .feedback-send {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}
