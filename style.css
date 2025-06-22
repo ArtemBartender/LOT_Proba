@@ -175,15 +175,13 @@ body::before {
   box-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
-/* ========== Cocktail List ========== */
+/* ========== Cocktail List & Cards ========== */
 .cocktail-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
   padding: 0 20px;
 }
-
-/* ========== Cocktail Cards (flip) ========== */
 .cocktail-card {
   perspective: 1000px;
   cursor: pointer;
@@ -198,17 +196,20 @@ body::before {
 
 /* flip container */
 .card-inner {
-  display: grid;
-  grid-template-areas: "frontback";
+  position: relative;
+  width: 100%;
+  padding-top: 140%;   /* соотношение сторон карточки ~5:7 */
   transform-style: preserve-3d;
   transition: transform 0.6s ease;
-  position: relative;
+  overflow: hidden;
 }
 
-/* faces */
+/* лица карточки */
 .card-front,
 .card-back {
-  grid-area: frontback;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   backface-visibility: hidden;
   padding: 15px;
   border-radius: var(--radius-sm);
@@ -354,12 +355,8 @@ footer {
 
 /* ========== Responsive ========== */
 @media (max-width: 480px) {
-  .modal-content {
-    padding: 20px 12px;
-  }
-  #feedback-form {
-    gap: 12px;
-  }
+  .modal-content { padding: 20px 12px; }
+  #feedback-form { gap: 12px; }
   .feedback-send {
     padding: 10px;
     font-size: 0.95rem;
