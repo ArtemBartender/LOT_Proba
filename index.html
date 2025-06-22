@@ -74,12 +74,35 @@
       <div class="modal-content">
         <button id="feedback-close" class="modal-close">&times;</button>
         <h2 id="feedback-title">Masz propozycję koktajlu?</h2>
-        <textarea
-          id="feedback-input"
-          rows="4"
-          placeholder="Wpisz nazwę koktajlu lub swoje uwagi…"
-        ></textarea>
-        <button id="feedback-send" class="feedback-send">Wyślij</button>
+
+        <!-- Вот здесь вставляем форму Formspree -->
+        <form
+          id="feedback-form"
+          action="https://formspree.io/f/movwkqyz"
+          method="POST"
+        >
+          <label>
+            Twój e-mail (opcjonalnie):
+            <input
+              type="email"
+              name="email"
+              placeholder="twój@email.com"
+            />
+          </label>
+          <label>
+            Twoja propozycja:
+            <textarea
+              name="message"
+              id="feedback-input"
+              rows="4"
+              required
+              placeholder="Wpisz nazwę koktajlu lub swoje uwagi…"
+            ></textarea>
+          </label>
+          <button type="submit" id="feedback-send" class="feedback-send">
+            Wyślij
+          </button>
+        </form>
       </div>
     </div>
 
