@@ -242,3 +242,10 @@ footer {
   border-color: var(--clr-accent);
   background: rgba(255,255,255,0.2);
 }
+
+.card-front,
+.card-back {
+  background-color: var(--clr-card-bg);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
