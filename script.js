@@ -9,6 +9,10 @@ const translations = {
     footer:      "Najlepszym podziękowaniem będzie Twoja opinia.",
     surprise:    "Zaskocz mnie koktajlem",
     searchPlaceholder: "🔍 Znajdź napój…",
+    feedbackButton:    "Zaproponuj drink",
+    feedbackTitle:     "Masz propozycję koktajlu?",
+    feedbackPlaceholder:"Wpisz nazwę koktajlu lub swoje uwagi…",
+    feedbackSend:      "Wyślij",
     categories: {
       all:           "Wszystkie",
       vodka:         "Wódka",
@@ -26,6 +30,11 @@ const translations = {
     footer:      "The best thank you is your opinion.",
     surprise:    "Surprise me a cocktail",
     searchPlaceholder: "🔍 Find your drink…",
+    searchPlaceholder: "🔍 Find your drink…",
+    feedbackButton:    "Suggest a drink",
+    feedbackTitle:     "Have a cocktail suggestion?",
+    feedbackPlaceholder:"Type the cocktail name or your note…",
+    feedbackSend:      "Send",
     categories: {
       all:           "All",
       vodka:         "Vodka",
