@@ -218,3 +218,27 @@ footer {
 .header-logo {
   filter: brightness(0) invert(1);
 }
+
+.search-bar {
+  margin: 20px auto;
+  max-width: 400px;
+  padding: 0 20px;
+}
+#drink-search {
+  width: 100%;
+  padding: 12px 20px;
+  font-family: var(--font-stack);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: var(--clr-text);
+  transition: border-color var(--transition), background var(--transition);
+}
+#drink-search::placeholder {
+  color: rgba(240,255,255,0.6);
+}
+#drink-search:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+  background: rgba(255,255,255,0.2);
+}
