@@ -1,6 +1,7 @@
 let language = 'pl';
 let currentCategory = 'all';
 
+// Переводы
 const translations = {
   pl: {
     header:      "",
@@ -36,6 +37,10 @@ const translations = {
   }
 };
 
+// Элемент поисковой строки
+const searchInput = document.getElementById('drink-search');
+
+// Смена языка
 function changeLanguage(lang) {
   language = lang;
   document.documentElement.lang = lang;
@@ -48,6 +53,7 @@ function changeLanguage(lang) {
   renderCocktails();
 }
 
+// Рендер кнопок категорий
 function renderCategories() {
   const container = document.getElementById("category-buttons");
   container.innerHTML = "";
@@ -64,18 +70,40 @@ function renderCategories() {
   });
 }
 
+// Рендер карточек коктейлей с учётом категории + поиска
 function renderCocktails() {
   const container = document.getElementById("cocktail-list");
   container.innerHTML = "";
 
-  const filtered = cocktails.filter(c =>
+  // 1) Фильтрация по категории
+  let filtered = cocktails.filter(c =>
     currentCategory === 'all' || c.category === currentCategory
   );
 
+  // 2) Фильтрация по запросу в поиске
+  const q = searchInput.value.trim().toLowerCase();
+  if (q) {
+    filtered = filtered.filter(c =>
+      // по названию
+      c.name[language].toLowerCase().includes(q)
+      // или по любому ингредиенту
+      || c.ingredients[language].some(ing => ing.toLowerCase().includes(q))
+    );
+  }
+
+  // 3) Если ничего не найдено
+  if (filtered.length === 0) {
+    const msg = language === 'pl'
+      ? 'Ничего не найдено 😕'
+      : 'No results found 😕';
+    container.innerHTML = `<p class="no-results">${msg}</p>`;
+    return;
+  }
+
+  // 4) Отрисовка карточек
   filtered.forEach(c => {
     const card = document.createElement("div");
     card.className = "cocktail-card";
-
     const inner = document.createElement("div");
     inner.className = "card-inner";
 
@@ -102,9 +130,9 @@ function renderCocktails() {
     card.appendChild(inner);
     container.appendChild(card);
 
+    // Flip on click
     card.addEventListener("click", () => {
       card.classList.toggle("flipped");
-      // Track card flips
       if (typeof gtag === 'function') {
         gtag('event', 'flip_card', {
           'event_category': 'engagement',
@@ -116,13 +144,17 @@ function renderCocktails() {
   });
 }
 
-// Surprise button handler
+// Обработчик кнопки "Surprise"
 const surpriseBtn = document.getElementById('surprise-btn');
 surpriseBtn.addEventListener('click', () => {
   const pool = cocktails.filter(c =>
     currentCategory === 'all' || c.category === currentCategory
   );
   const pick = pool[Math.floor(Math.random() * pool.length)];
+  // показываем только его
+  searchInput.value = '';
+  currentCategory = 'all';
+  renderCategories();
 
   const container = document.getElementById("cocktail-list");
   container.innerHTML = "";
@@ -166,7 +198,7 @@ surpriseBtn.addEventListener('click', () => {
 
   card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-  // Track surprise clicks
+  // analytics
   if (typeof gtag === 'function') {
     gtag('event', 'click', {
       'event_category': 'engagement',
@@ -176,7 +208,7 @@ surpriseBtn.addEventListener('click', () => {
   }
 });
 
-// Track all link clicks
+// Трэк всех ссылок
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     if (typeof gtag === 'function') {
@@ -189,5 +221,8 @@ document.querySelectorAll('a').forEach(link => {
   });
 });
 
-// Initialize on load
-window.onload = () => changeLanguage(language);
+// Привязываем слушатель поиска и инициализируем
+window.onload = () => {
+  searchInput.addEventListener('input', renderCocktails);
+  changeLanguage(language);
+};
