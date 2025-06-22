@@ -335,3 +335,32 @@ footer {
   background-color: #006ae6;
 }
 
+/* Стили для формы в модалке */
+#feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#feedback-form label {
+  display: flex;
+  flex-direction: column;
+  color: #f0ffff;
+  font-size: 0.95rem;
+}
+#feedback-form input[type="email"],
+#feedback-form textarea {
+  margin-top: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(240,255,255,0.3);
+  background: rgba(0,0,0,0.4);
+  color: #f0ffff;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+#feedback-form input:focus,
+#feedback-form textarea:focus {
+  outline: none;
+  border-color: #db620a;
+}
