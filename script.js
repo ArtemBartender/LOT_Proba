@@ -150,6 +150,7 @@ function renderCocktails() {
     card.appendChild(inner);
     container.appendChild(card);
 
+    // flip по клику
     card.addEventListener('click', () => {
       card.classList.toggle('flipped');
       if (typeof gtag === 'function') {
@@ -163,7 +164,7 @@ function renderCocktails() {
   });
 }
 
-// Обработчик “Surprise me”
+// Surprise me
 surpriseBtn.addEventListener('click', () => {
   const pool = cocktails.filter(c =>
     currentCategory === 'all' || c.category === currentCategory
@@ -203,14 +204,6 @@ surpriseBtn.addEventListener('click', () => {
   container.appendChild(card);
   card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-  if (typeof gtag === 'function') {
-    gtag('event', 'click', {
-      'event_category': 'engagement',
-      'event_label': 'surprise_button',
-      'transport_type': 'beacon'
-    });
-  }
-
   card.addEventListener('click', () => {
     card.classList.toggle('flipped');
   });
@@ -239,13 +232,32 @@ fbModal.addEventListener('click', e => {
   if (e.target === fbModal) fbModal.classList.add('hidden');
 });
 
+// Кастомная валидация e-mail
+fbEmail.addEventListener('invalid', e => {
+  e.preventDefault();
+  if (fbEmail.validity.valueMissing) {
+    fbEmail.setCustomValidity(
+      language === 'pl'
+        ? 'Proszę podać adres e-mail.'
+        : 'Please enter your email.'
+    );
+  } else if (fbEmail.validity.typeMismatch) {
+    fbEmail.setCustomValidity(
+      language === 'pl'
+        ? 'Proszę wpisać poprawny adres e-mail.'
+        : 'Please enter a valid email address.'
+    );
+  }
+  fbEmail.reportValidity();
+});
+fbEmail.addEventListener('input', () => {
+  fbEmail.setCustomValidity('');
+});
+
 // Отправка формы на Formspree через AJAX
 fbForm.addEventListener('submit', e => {
   e.preventDefault();
   const data = new FormData(fbForm);
-  // опционально: data.append('_subject', translations[language].feedbackTitle);
-  // опционально: data.append('_replyto', data.get('email'));
-
   fetch(fbForm.action, {
     method: 'POST',
     body: data,
@@ -254,7 +266,7 @@ fbForm.addEventListener('submit', e => {
   .then(res => {
     if (res.ok) {
       const thanks = document.createElement('p');
-      thanks.textContent = language==='pl'
+      thanks.textContent = language === 'pl'
         ? 'Dziękujemy za propozycję!'
         : 'Thanks for your suggestion!';
       thanks.style.color = '#db620a';
@@ -262,12 +274,12 @@ fbForm.addEventListener('submit', e => {
       fbForm.replaceWith(thanks);
       setTimeout(() => fbModal.classList.add('hidden'), 2000);
     } else {
-      alert(language==='pl'
-        ? 'Błąd wysyłki. Spróbuj пóźniej.'
+      alert(language === 'pl'
+        ? 'Błąd wysyłki. Spróbuj później.'
         : 'Submission error. Try again later.');
     }
   })
-  .catch(() => alert(language==='pl'
+  .catch(() => alert(language === 'pl'
     ? 'Błąd sieci.'
     : 'Network error.'));
 });
