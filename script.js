@@ -8,11 +8,11 @@ const translations = {
     title:       "Menu drinków",
     footer:      "Najlepszym podziękowaniem będzie Twoja opinia.",
     surprise:    "Zaskocz mnie koktajlem",
-    searchPlaceholder: "🔍 Znajdź napój…",
-    feedbackButton:    "Zaproponuj drink",
-    feedbackTitle:     "Masz propozycję koktajlu?",
-    feedbackPlaceholder:"Wpisz nazwę koktajlu lub swoje uwagi…",
-    feedbackSend:      "Wyślij",
+    searchPlaceholder:   "🔍 Znajdź napój…",
+    feedbackButton:      "Zaproponuj drink",
+    feedbackTitle:       "Masz propozycję koktajlu?",
+    feedbackPlaceholder: "Wpisz nazwę koktajlu lub swoje uwagi…",
+    feedbackSend:        "Wyślij",
     categories: {
       all:           "Wszystkie",
       vodka:         "Wódka",
@@ -29,12 +29,11 @@ const translations = {
     title:       "Cocktail Menu",
     footer:      "The best thank you is your opinion.",
     surprise:    "Surprise me a cocktail",
-    searchPlaceholder: "🔍 Find your drink…",
-    searchPlaceholder: "🔍 Find your drink…",
-    feedbackButton:    "Suggest a drink",
-    feedbackTitle:     "Have a cocktail suggestion?",
-    feedbackPlaceholder:"Type the cocktail name or your note…",
-    feedbackSend:      "Send",
+    searchPlaceholder:   "🔍 Find your drink…",
+    feedbackButton:      "Suggest a drink",
+    feedbackTitle:       "Have a cocktail suggestion?",
+    feedbackPlaceholder: "Type the cocktail name or your note…",
+    feedbackSend:        "Send",
     categories: {
       all:           "All",
       vodka:         "Vodka",
@@ -48,10 +47,16 @@ const translations = {
   }
 };
 
-// Элемент поисковой строки
+// Элементы DOM, к которым обращаемся
 const searchInput = document.getElementById('drink-search');
+const surpriseBtn = document.getElementById('surprise-btn');
+const fbBtn    = document.getElementById("feedback-btn");
+const fbModal  = document.getElementById("feedback-modal");
+const fbClose  = document.getElementById("feedback-close");
+const fbInput  = document.getElementById("feedback-input");
+const fbSend   = document.getElementById("feedback-send");
 
-// Смена языка
+// Смена языка и обновление UI
 function changeLanguage(lang) {
   language = lang;
   document.documentElement.lang = lang;
@@ -60,12 +65,17 @@ function changeLanguage(lang) {
   document.querySelector(".site-header h2").textContent = translations[lang].header;
   document.getElementById("footer-text").textContent = translations[lang].footer;
   document.getElementById("surprise-btn").textContent = translations[lang].surprise;
-  document.getElementById("drink-search").placeholder = translations[lang].searchPlaceholder;
+  searchInput.placeholder  = translations[lang].searchPlaceholder;
+  fbBtn.textContent        = translations[lang].feedbackButton;
+  document.getElementById("feedback-title").textContent = translations[lang].feedbackTitle;
+  fbInput.placeholder      = translations[lang].feedbackPlaceholder;
+  fbSend.textContent       = translations[lang].feedbackSend;
+
   renderCategories();
   renderCocktails();
 }
 
-// Рендер кнопок категорий
+// Кнопки категорий
 function renderCategories() {
   const container = document.getElementById("category-buttons");
   container.innerHTML = "";
@@ -82,44 +92,42 @@ function renderCategories() {
   });
 }
 
-// Рендер карточек коктейлей с учётом категории + поиска
+// Отрисовка списка коктейлей (с учётом категории и поиска)
 function renderCocktails() {
   const container = document.getElementById("cocktail-list");
   container.innerHTML = "";
 
-  // 1) Фильтрация по категории
+  // 1) Фильтр по категории
   let filtered = cocktails.filter(c =>
     currentCategory === 'all' || c.category === currentCategory
   );
 
-  // 2) Фильтрация по запросу в поиске
+  // 2) Фильтр по запросу
   const q = searchInput.value.trim().toLowerCase();
   if (q) {
     filtered = filtered.filter(c =>
-      // по названию
-      c.name[language].toLowerCase().includes(q)
-      // или по любому ингредиенту
-      || c.ingredients[language].some(ing => ing.toLowerCase().includes(q))
+      c.name[language].toLowerCase().includes(q) ||
+      c.ingredients[language].some(ing => ing.toLowerCase().includes(q))
     );
   }
 
-  // 3) Если ничего не найдено
+  // 3) Если пустой результат
   if (filtered.length === 0) {
     const msg = language === 'pl'
-      ? 'Ничего не найдено 😕'
+      ? 'Nic nie znaleziono 😕'
       : 'No results found 😕';
     container.innerHTML = `<p class="no-results">${msg}</p>`;
     return;
   }
 
-  // 4) Отрисовка карточек
+  // 4) Рисуем карточки
   filtered.forEach(c => {
-    const card = document.createElement("div");
+    const card  = document.createElement("div");
     card.className = "cocktail-card";
     const inner = document.createElement("div");
     inner.className = "card-inner";
 
-    // Front
+    // лицевая сторона
     const front = document.createElement("div");
     front.className = "card-front";
     const nameEl = document.createElement("h2");
@@ -131,7 +139,7 @@ function renderCocktails() {
       front.appendChild(p);
     });
 
-    // Back
+    // обратная сторона
     const back = document.createElement("div");
     back.className = "card-back";
     const desc = document.createElement("p");
@@ -142,7 +150,7 @@ function renderCocktails() {
     card.appendChild(inner);
     container.appendChild(card);
 
-    // Flip on click
+    // переворот карточки
     card.addEventListener("click", () => {
       card.classList.toggle("flipped");
       if (typeof gtag === 'function') {
@@ -156,22 +164,22 @@ function renderCocktails() {
   });
 }
 
-// Обработчик кнопки "Surprise"
-const surpriseBtn = document.getElementById('surprise-btn');
+// Обработчик “Surprise me”
 surpriseBtn.addEventListener('click', () => {
   const pool = cocktails.filter(c =>
     currentCategory === 'all' || c.category === currentCategory
   );
   const pick = pool[Math.floor(Math.random() * pool.length)];
-  // показываем только его
+
+  // сброс поиска/категорий
   searchInput.value = '';
   currentCategory = 'all';
   renderCategories();
 
+  // показываем только pick
   const container = document.getElementById("cocktail-list");
   container.innerHTML = "";
-
-  const card = document.createElement("div");
+  const card  = document.createElement("div");
   card.className = "cocktail-card";
   const inner = document.createElement("div");
   inner.className = "card-inner";
@@ -196,18 +204,6 @@ surpriseBtn.addEventListener('click', () => {
   inner.append(front, back);
   card.appendChild(inner);
   container.appendChild(card);
-
-  card.addEventListener("click", () => {
-    card.classList.toggle("flipped");
-    if (typeof gtag === 'function') {
-      gtag('event', 'flip_card', {
-        'event_category': 'engagement',
-        'event_label': pick.name[language],
-        'transport_type': 'beacon'
-      });
-    }
-  });
-
   card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
   // analytics
@@ -218,9 +214,13 @@ surpriseBtn.addEventListener('click', () => {
       'transport_type': 'beacon'
     });
   }
+
+  card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
+  });
 });
 
-// Трэк всех ссылок
+// Трек ссылок
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     if (typeof gtag === 'function') {
@@ -233,7 +233,31 @@ document.querySelectorAll('a').forEach(link => {
   });
 });
 
-// Привязываем слушатель поиска и инициализируем
+// Открытие/закрытие модалки и отправка фидбека
+fbBtn.addEventListener("click", () => {
+  fbInput.value = "";
+  fbModal.classList.remove("hidden");
+});
+fbClose.addEventListener("click", () => fbModal.classList.add("hidden"));
+fbModal.addEventListener("click", e => {
+  if (e.target === fbModal) fbModal.classList.add("hidden");
+});
+fbSend.addEventListener("click", () => {
+  const text = fbInput.value.trim();
+  if (!text) {
+    alert(language === 'pl' ? 'Wpisz treść!' : 'Please enter something!');
+    return;
+  }
+  const subject = encodeURIComponent(
+    language === 'pl' ? 'Propozycja koktajlu' : 'Cocktail suggestion'
+  );
+  const body = encodeURIComponent(text);
+  window.location.href = 
+    `mailto:bar-admin@lotlounge.com?subject=${subject}&body=${body}`;
+  fbModal.classList.add("hidden");
+});
+
+// Инициализация
 window.onload = () => {
   searchInput.addEventListener('input', renderCocktails);
   changeLanguage(language);
