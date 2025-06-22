@@ -49,13 +49,13 @@
       <input
         type="text"
         id="drink-search"
-        placeholder="🔍 Найти напиток…"
+        placeholder="🔍 Znajdź napój…"
         autocomplete="off"
       />
     </section>
 
     <!-- Кнопка «Сюрприз мне коктейль» -->
-    <button id="surprise-btn" class="surprise-btn"></button>
+    <button id="surprise-btn" class="surprise-btn">Zaskocz mnie koktajlem</button>
 
     <div class="category-switch" id="category-buttons"></div>
     <div class="cocktail-list" id="cocktail-list"></div>
@@ -65,6 +65,24 @@
         Najlepszym podziękowaniem będzie Twoja opinia.
       </p>
     </footer>
+
+    <!-- Кнопка «Предложить коктейль» -->
+    <button id="feedback-btn" class="feedback-btn">Zaproponuj drink</button>
+
+    <!-- Модальное окно для отзывов -->
+    <div id="feedback-modal" class="feedback-modal hidden">
+      <div class="modal-content">
+        <button id="feedback-close" class="modal-close">&times;</button>
+        <h2 id="feedback-title">Masz propozycję koktajlu?</h2>
+        <textarea
+          id="feedback-input"
+          rows="4"
+          placeholder="Wpisz nazwę koktajlu lub swoje uwagi…"
+        ></textarea>
+        <button id="feedback-send" class="feedback-send">Wyślij</button>
+      </div>
+    </div>
+
   </div>
 
   <script src="cocktails.js"></script>
@@ -83,10 +101,6 @@
         '_blank',
         'noopener'
       );
-    });
-
-    window.addEventListener('load', () => {
-      ageModal.style.display = 'flex';
     });
   </script>
 
