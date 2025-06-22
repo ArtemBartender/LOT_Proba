@@ -4,20 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B9TLTDS3W2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9TLTDS3W2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B9TLTDS3W2');
+  </script>
 
-  gtag('config', 'G-B9TLTDS3W2');
-</script>
-
-  
   <title>Menu Koktajli LOT</title>
-
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" href="./icons/favicon.ico" type="image/x-icon">
@@ -27,15 +24,6 @@
 </head>
 <body>
 
-  <!-- ========== Age-gate overlay ========== 
-  <div id="age-modal" class="age-modal">
-    <div class="age-modal__content">
-      <p>Czy masz ukończone 18 lat?</p>
-      <button id="age-yes">Tak</button>
-      <button id="age-no">Nie</button>
-    </div>
-  </div>
--->
   <!-- ========== Фиксированная шапка ========== -->
   <header class="site-header">
     <a href="https://www.lot.com/pl/pl" class="header-logo-link">
@@ -56,6 +44,16 @@
   <div class="container">
     <h1 id="page-title">Menu drinków</h1>
 
+    <!-- Поисковая строка -->
+    <section class="search-bar">
+      <input
+        type="text"
+        id="drink-search"
+        placeholder="🔍 Найти напиток…"
+        autocomplete="off"
+      />
+    </section>
+
     <!-- Кнопка «Сюрприз мне коктейль» -->
     <button id="surprise-btn" class="surprise-btn"></button>
 
@@ -70,7 +68,6 @@
   </div>
 
   <script src="cocktails.js"></script>
- 
 
   <script>
     if ('serviceWorker' in navigator) {
@@ -87,26 +84,12 @@
         'noopener'
       );
     });
-/*
-    // Age-gate logic
-    const ageModal = document.getElementById('age-modal');
-    const btnYes   = document.getElementById('age-yes');
-    const btnNo    = document.getElementById('age-no');
 
-    btnYes.addEventListener('click', () => {
-      ageModal.style.display = 'none';
-      changeLanguage(language);
-    });
-    btnNo.addEventListener('click', () => {
-      ageModal.style.display = 'none';
-      currentCategory = 'non_alcoholic';
-      changeLanguage(language);
-    });
-*/
     window.addEventListener('load', () => {
       ageModal.style.display = 'flex';
     });
   </script>
+
   <script src="script.js"></script>
 </body>
 </html>
