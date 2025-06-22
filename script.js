@@ -253,7 +253,7 @@ fbSend.addEventListener("click", () => {
   );
   const body = encodeURIComponent(text);
   window.location.href = 
-    `mailto:bar-admin@lotlounge.com?subject=${subject}&body=${body}`;
+    `mailto:a.bilenko@lot.pl?subject=${subject}&body=${body}`;
   fbModal.classList.add("hidden");
 });
 
