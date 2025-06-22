@@ -8,6 +8,7 @@ const translations = {
     title:       "Menu drinków",
     footer:      "Najlepszym podziękowaniem będzie Twoja opinia.",
     surprise:    "Zaskocz mnie koktajlem",
+    searchPlaceholder: "🔍 Znajdź napój…",
     categories: {
       all:           "Wszystkie",
       vodka:         "Wódka",
@@ -24,6 +25,7 @@ const translations = {
     title:       "Cocktail Menu",
     footer:      "The best thank you is your opinion.",
     surprise:    "Surprise me a cocktail",
+    searchPlaceholder: "🔍 Find your drink…",
     categories: {
       all:           "All",
       vodka:         "Vodka",
@@ -49,6 +51,7 @@ function changeLanguage(lang) {
   document.querySelector(".site-header h2").textContent = translations[lang].header;
   document.getElementById("footer-text").textContent = translations[lang].footer;
   document.getElementById("surprise-btn").textContent = translations[lang].surprise;
+  document.getElementById("drink-search").placeholder = translations[lang].searchPlaceholder;
   renderCategories();
   renderCocktails();
 }
