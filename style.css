@@ -178,8 +178,8 @@ body::before {
 /* ========== Cocktail List & Cards ========== */
 .cocktail-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
   padding: 0 20px;
 }
 .cocktail-card {
@@ -202,7 +202,7 @@ body::before {
 .card-inner {
   position: relative;
   width: 100%;
-  padding-top: 150%;          /* задаёт высоту через паддинги */
+  padding-top: 120%;          /* задаёт высоту через паддинги */
   transform-style: preserve-3d;
   transition: transform 0.6s ease;
   /* убираем overflow:hidden, иначе бэк-сторона будет обрезаться */
@@ -213,7 +213,7 @@ body::before {
   position: absolute;
   inset: 0;                   /* top:0; right:0; bottom:0; left:0 */
   backface-visibility: hidden;
-  padding: 10px;
+  padding: 15px;
   border-radius: var(--radius-sm);
   background-color: var(--clr-bg-dark);
 }
