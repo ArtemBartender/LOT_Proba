@@ -202,10 +202,9 @@ body::before {
 .card-inner {
   position: relative;
   width: 100%;
-  padding-top: 120%;          /* задаёт высоту через паддинги */
+  aspect-ratio: 1 / 0.9;      /* высота = 0.9 × ширины */
   transform-style: preserve-3d;
   transition: transform 0.6s ease;
-  /* убираем overflow:hidden, иначе бэк-сторона будет обрезаться */
 }
 
 .card-front,
