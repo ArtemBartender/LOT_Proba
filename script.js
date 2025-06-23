@@ -4,82 +4,81 @@ let currentCategory = 'all';
 // Переводы
 const translations = {
   pl: {
-    header:      "",
-    title:       "Menu drinków",
-    footer:      "Najlepszym podziękowaniem będzie Twoja opinia.",
-    surprise:    "Zaskocz mnie koktajlem",
-    searchPlaceholder:   "🔍 Znajdź napój…",
-    feedbackButton:      "Zaproponuj drink",
-    feedbackTitle:       "Masz propozycję koktajlu?",
-    feedbackPlaceholder: "Wpisz nazwę koktajlu lub swoje uwagi…",
-    feedbackSend:        "Wyślij",
+    header: "",
+    title: "Menu drinków",
+    footer: "Najlepszym podziękowaniem będzie Twoja opinia.",
+    surprise: "Zaskocz mnie koktajlem",
+    searchPlaceholder: "🔍 Znajdź napój…",
+    feedbackButton: "Zaproponuj drink",
+    feedbackTitle: "Masz propozycję koktajlu?",
+    feedbackEmailLabel: "Twój e-mail (opcjonalnie):",
+    feedbackEmailPlaceholder: "twój@email.com",
+    feedbackMessageLabel: "Twoja propozycja:",
+    feedbackMessagePlaceholder: "Wpisz nazwę koktajlu lub swoje uwagi…",
+    feedbackSend: "Wyślij",
     categories: {
-      all:           "Wszystkie",
-      vodka:         "Wódka",
-      whiskey:       "Whiskey & Bourbon",
-      rum:           "Rum",
-      liqueur:       "Likier",
-      gin:           "Gin",
-      non_alcoholic: "Bezalkoholowe",
-      beer:          "Piwo"
+      all: 'Wszystkie', vodka: 'Wódka', whiskey: 'Whiskey & Bourbon', rum: 'Rum',
+      liqueur: 'Likier', gin: 'Gin', non_alcoholic: 'Bezalkoholowe', beer: 'Piwo'
     }
   },
   en: {
-    header:      "",
-    title:       "Cocktail Menu",
-    footer:      "The best thank you is your opinion.",
-    surprise:    "Surprise me a cocktail",
-    searchPlaceholder:   "🔍 Find your drink…",
-    feedbackButton:      "Suggest a drink",
-    feedbackTitle:       "Have a cocktail suggestion?",
-    feedbackPlaceholder: "Type the cocktail name or your note…",
-    feedbackSend:        "Send",
+    header: "",
+    title: "Cocktail Menu",
+    footer: "The best thank you is your opinion.",
+    surprise: "Surprise me a cocktail",
+    searchPlaceholder: "🔍 Find your drink…",
+    feedbackButton: "Suggest a drink",
+    feedbackTitle: "Have a cocktail suggestion?",
+    feedbackEmailLabel: "Your e-mail (optional):",
+    feedbackEmailPlaceholder: "your@email.com",
+    feedbackMessageLabel: "Your suggestion:",
+    feedbackMessagePlaceholder: "Type the cocktail name or your note…",
+    feedbackSend: "Send",
     categories: {
-      all:           "All",
-      vodka:         "Vodka",
-      whiskey:       "Whiskey & Bourbon",
-      rum:           "Rum",
-      liqueur:       "Liqueur",
-      gin:           "Gin",
-      non_alcoholic: "Non-alcoholic",
-      beer:          "Beer"
+      all: 'All', vodka: 'Vodka', whiskey: 'Whiskey & Bourbon', rum: 'Rum',
+      liqueur: 'Liqueur', gin: 'Gin', non_alcoholic: 'Non-alcoholic', beer: 'Beer'
     }
   }
 };
 
-// Элементы DOM
-const searchInput = document.getElementById('drink-search');
-const surpriseBtn = document.getElementById('surprise-btn');
-const fbBtn       = document.getElementById('feedback-btn');
-const fbModal     = document.getElementById('feedback-modal');
-const fbClose     = document.getElementById('feedback-close');
-
-// Форма и её поля
-const fbForm      = document.getElementById('feedback-form');
-const fbEmail     = fbForm.querySelector('input[name="email"]');
-const fbMessage   = fbForm.querySelector('textarea[name="message"]');
-const fbSendBtn   = document.getElementById('feedback-send');
+// DOM-элементы
+const searchInput    = document.getElementById('drink-search');
+const surpriseBtn    = document.getElementById('surprise-btn');
+const fbBtn          = document.getElementById('feedback-btn');
+const fbModal        = document.getElementById('feedback-modal');
+const fbClose        = document.getElementById('feedback-close');
+const fbForm         = document.getElementById('feedback-form');
+const fbEmailLabel   = document.getElementById('feedback-email-label');
+const fbEmail        = document.getElementById('feedback-email');
+const fbMessageLabel = document.getElementById('feedback-message-label');
+const fbMessage      = document.getElementById('feedback-message');
+const fbSendBtn      = document.getElementById('feedback-send');
 
 // Смена языка и обновление UI
 function changeLanguage(lang) {
   language = lang;
   document.documentElement.lang = lang;
   document.title = translations[lang].title;
-  document.getElementById('page-title').textContent      = translations[lang].title;
-  document.querySelector('.site-header h2').textContent  = translations[lang].header;
-  document.getElementById('footer-text').textContent     = translations[lang].footer;
-  document.getElementById('surprise-btn').textContent    = translations[lang].surprise;
-  searchInput.placeholder                               = translations[lang].searchPlaceholder;
-  fbBtn.textContent                                     = translations[lang].feedbackButton;
-  document.getElementById('feedback-title').textContent = translations[lang].feedbackTitle;
-  fbMessage.placeholder                                 = translations[lang].feedbackPlaceholder;
-  fbSendBtn.textContent                                 = translations[lang].feedbackSend;
+  document.getElementById('page-title').textContent     = translations[lang].title;
+  document.querySelector('.site-header h2').textContent = translations[lang].header;
+  document.getElementById('footer-text').textContent    = translations[lang].footer;
+  surpriseBtn.textContent                             = translations[lang].surprise;
+  searchInput.placeholder                             = translations[lang].searchPlaceholder;
+  fbBtn.textContent                                   = translations[lang].feedbackButton;
+  document.getElementById('feedback-title').textContent= translations[lang].feedbackTitle;
+
+  // Перевод формы
+  fbEmailLabel.textContent    = translations[lang].feedbackEmailLabel;
+  fbEmail.placeholder         = translations[lang].feedbackEmailPlaceholder;
+  fbMessageLabel.textContent  = translations[lang].feedbackMessageLabel;
+  fbMessage.placeholder       = translations[lang].feedbackMessagePlaceholder;
+  fbSendBtn.textContent       = translations[lang].feedbackSend;
 
   renderCategories();
   renderCocktails();
 }
 
-// Рендер кнопок категорий
+// Рендер категорий
 function renderCategories() {
   const container = document.getElementById('category-buttons');
   container.innerHTML = '';
@@ -96,7 +95,7 @@ function renderCategories() {
   });
 }
 
-// Рендер списка коктейлей
+// Рендер коктейлей
 function renderCocktails() {
   const container = document.getElementById('cocktail-list');
   container.innerHTML = '';
@@ -113,7 +112,7 @@ function renderCocktails() {
     );
   }
 
-  if (filtered.length === 0) {
+  if (!filtered.length) {
     const msg = language === 'pl'
       ? 'Nic nie znaleziono 😕'
       : 'No results found 😕';
@@ -127,7 +126,6 @@ function renderCocktails() {
     const inner = document.createElement('div');
     inner.className = 'card-inner';
 
-    // Front
     const front = document.createElement('div');
     front.className = 'card-front';
     const nameEl = document.createElement('h2');
@@ -139,7 +137,6 @@ function renderCocktails() {
       front.appendChild(p);
     });
 
-    // Back
     const back = document.createElement('div');
     back.className = 'card-back';
     const desc = document.createElement('p');
@@ -150,14 +147,13 @@ function renderCocktails() {
     card.appendChild(inner);
     container.appendChild(card);
 
-    // flip по клику
     card.addEventListener('click', () => {
       card.classList.toggle('flipped');
       if (typeof gtag === 'function') {
         gtag('event', 'flip_card', {
-          'event_category': 'engagement',
-          'event_label': c.name[language],
-          'transport_type': 'beacon'
+          event_category: 'engagement',
+          event_label: c.name[language],
+          transport_type: 'beacon'
         });
       }
     });
@@ -202,27 +198,25 @@ surpriseBtn.addEventListener('click', () => {
   inner.append(front, back);
   card.appendChild(inner);
   container.appendChild(card);
-  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-  card.addEventListener('click', () => {
-    card.classList.toggle('flipped');
-  });
+  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
 });
 
-// Трек ссылок
+// Навигация
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     if (typeof gtag === 'function') {
       gtag('event', 'click', {
-        'event_category': 'navigation',
-        'event_label': link.href,
-        'transport_type': 'beacon'
+        event_category: 'navigation',
+        event_label: link.href,
+        transport_type: 'beacon'
       });
     }
   });
 });
 
-// Открытие/закрытие модалки
+// Модалка
 fbBtn.addEventListener('click', () => {
   fbForm.reset();
   fbModal.classList.remove('hidden');
@@ -250,11 +244,9 @@ fbEmail.addEventListener('invalid', e => {
   }
   fbEmail.reportValidity();
 });
-fbEmail.addEventListener('input', () => {
-  fbEmail.setCustomValidity('');
-});
+fbEmail.addEventListener('input', () => fbEmail.setCustomValidity(''));
 
-// Отправка формы на Formspree через AJAX
+// Отправка формы Formspree
 fbForm.addEventListener('submit', e => {
   e.preventDefault();
   const data = new FormData(fbForm);
@@ -263,25 +255,29 @@ fbForm.addEventListener('submit', e => {
     body: data,
     headers: { 'Accept': 'application/json' }
   })
-  .then(res => {
-    if (res.ok) {
-      const thanks = document.createElement('p');
-      thanks.textContent = language === 'pl'
-        ? 'Dziękujemy za propozycję!'
-        : 'Thanks for your suggestion!';
-      thanks.style.color = '#db620a';
-      thanks.style.textAlign = 'center';
-      fbForm.replaceWith(thanks);
-      setTimeout(() => fbModal.classList.add('hidden'), 2000);
-    } else {
-      alert(language === 'pl'
-        ? 'Błąd wysyłki. Spróbuj później.'
-        : 'Submission error. Try again later.');
-    }
-  })
-  .catch(() => alert(language === 'pl'
-    ? 'Błąd sieci.'
-    : 'Network error.'));
+    .then(res => {
+      if (res.ok) {
+        const thanks = document.createElement('p');
+        thanks.textContent = language === 'pl'
+          ? 'Dziękujemy za propozycję!'
+          : 'Thanks for your suggestion!';
+        thanks.style.color = '#db620a';
+        thanks.style.textAlign = 'center';
+        fbForm.replaceWith(thanks);
+        setTimeout(() => fbModal.classList.add('hidden'), 2000);
+      } else {
+        alert(
+          language === 'pl'
+            ? 'Błąd wysyłki. Spróbuj później.'
+            : 'Submission error. Try again later.'
+        );
+      }
+    })
+    .catch(() => alert(
+      language === 'pl'
+        ? 'Błąd sieci.'
+        : 'Network error.'
+    ));
 });
 
 // Инициализация
