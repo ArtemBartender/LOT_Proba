@@ -1,6 +1,9 @@
 const cocktails = [
   {
-    name: { pl: "Blue Orange Whiskey Sour", en: "Blue Orange Whiskey Sour" },
+    name: { 
+      pl: "Blue Orange Whiskey Sour", 
+      en: "Blue Orange Whiskey Sour" 
+    },
     ingredients: {
       pl: ["Whiskey", "Blue Curacao Syrop", "Syrop cukrowy", "Sok z cytryny"],
       en: ["Whiskey", "Blue Curacao Syrup", "Simple syrup", "Lemon juice"]
@@ -540,6 +543,37 @@ const cocktails = [
       en: "A Manhattan-style cocktail with bourbon and elegant bianco vermouth."
     }
   },
+  {
+  name: {
+    pl: "Szarlotka",
+    en: "Apple Pie"
+  },
+  ingredients: {
+  pl: ["Wódka", "Sok z cytryny", "Sok jabłkowy", "Syrop waniliowy"],
+  en: ["Vodka", "Lemon juice", "Apple juice", "Vanilla syrup"]
+  },
+  category: "wodka", // или другая подходящая категория
+  description: {
+    pl: "Ciepły smak szarlotki w formie drinka.",
+    en: "All the cozy apple pie vibes in a glass."
+  }
+},
+  {
+  name: {
+    pl: "Long Island",
+    en: "Long Island"
+  },
+  ingredients: {
+    pl: ["Wódka", "Rum", "Gin", "Whiskey", "Triple sec", "Coca-Cola", "Cytryna"],
+    en: ["Vodka", "Rum", "Gin", "Whiskey", "Triple sec", "Coke", "Lemon"]
+  },
+  category: "rum", // albo możesz dodać nową kategorię 'mix'
+  description: {
+    pl: "Klasyczny koktajl z czterema mocnymi alkoholami i nutą coli.",
+    en: "The classic four-spirit cocktail topped with a splash of cola."
+  }
+},
+
   {
     name: { 
       pl: "Iguana (bezalkoholowe)", 
