@@ -66,45 +66,58 @@
       </p>
     </footer>
 
-    <!-- Кнопка «Предложить коктейль» -->
-    <button id="feedback-btn" class="feedback-btn">Zaproponuj drink</button>
+  <!-- Кнопка «Предложить коктейль» -->
+<button id="feedback-btn" class="feedback-btn">
+  Zaproponuj drink
+</button>
 
-    <!-- Модальное окно для отзывов -->
-    <div id="feedback-modal" class="feedback-modal hidden">
-      <div class="modal-content">
-        <button id="feedback-close" class="modal-close">&times;</button>
-        <h2 id="feedback-title">Masz propozycję koktajlu?</h2>
+<!-- Модальное окно для отзывов -->
+<div id="feedback-modal" class="feedback-modal hidden">
+  <div class="modal-content">
+    <button id="feedback-close" class="modal-close">&times;</button>
 
-        <!-- Вот здесь вставляем форму Formspree -->
-        <form
-          id="feedback-form"
-          action="https://formspree.io/f/movwkqyz"
-          method="POST"
-        >
-          <label>
-            Twój e-mail (opcjonalnie):
-            <input
-              type="email"
-              name="email"
-              placeholder="twój@email.com"
-            />
-          </label>
-          <label>
-            Twoja propozycja:
-            <textarea
-              name="message"
-              id="feedback-input"
-              rows="4"
-              required
-              placeholder="Wpisz nazwę koktajlu lub swoje uwagi…"
-            ></textarea>
-          </label>
-          <button type="submit" id="feedback-send" class="feedback-send">
-            Wyślij
-          </button>
-        </form>
+    <h2 id="feedback-title">Masz propozycję koktajlu?</h2>
+
+    <!-- Форма Formspree -->
+    <form
+      id="feedback-form"
+      action="https://formspree.io/f/movwkqyz"
+      method="POST"
+    >
+      <div id="feedback-email-group">
+        <label for="feedback-email" id="feedback-email-label">
+          Twój e-mail (opcjonalnie):
+        </label>
+        <input
+          type="email"
+          name="email"
+          id="feedback-email"
+          placeholder="twój@email.com"
+        />
       </div>
-    </div>
+
+      <div id="feedback-message-group">
+        <label for="feedback-message" id="feedback-message-label">
+          Twoja propozycja:
+        </label>
+        <textarea
+          name="message"
+          id="feedback-message"
+          rows="4"
+          required
+          placeholder="Wpisz nazwę koktajlu lub swoje uwagi…"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        id="feedback-send"
+        class="feedback-send"
+      >Wyślij</button>
+    </form>
+  </div>
+</div>
+
 
   </div>
 
