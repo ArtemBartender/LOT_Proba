@@ -61,7 +61,7 @@ const cocktails = [
       pl: ["Wódka smakowa (morelowa)", "Spiced Rum", "Sok czarnej porzeczki"],
       en: ["Flavored vodka (apricot)", "Spiced Rum", "Blackcurrant juice"]
     },
-    category: "vodka",
+    categories: ["vodka", "rum"],
     description: {
       pl: "Aromatyczne morele i korzenny rum z delikatnym, cierpkim finiszem porzeczki.",
       en: "Aromatic apricot meets spiced rum with a delicate, tart blackcurrant finish."
@@ -85,7 +85,7 @@ const cocktails = [
       pl: ["Bourbon", "Wódka smakowa (wiśniowa)", "Syrop malinowy"],
       en: ["Bourbon", "Flavored vodka (cherry)", "Raspberry syrup"]
     },
-    category: "vodka",
+    categories: ["vodka", "whiskey"],
     description: {
       pl: "Uderzenie soczystych wiśni i malin z miękką bazą bourbonu — eksplozja owocowego smaku.",
       en: "A burst of juicy cherries and raspberries over a smooth bourbon base — fruity flavor explosion."
@@ -184,7 +184,7 @@ const cocktails = [
       pl: ["Wódka", "Likier mleczny", "Świeże espresso"],
       en: ["Vodka", "Milk liqueur", "Fresh espresso"]
     },
-    category: "liqueur",
+    categories: ["vodka", "liqueur"],
     description: {
       pl: "Energetyczne połączenie intensywnego espresso i likieru w eleganckim drinku.",
       en: "An energizing blend of rich espresso and liqueur in an elegant cocktail."
@@ -213,7 +213,7 @@ const cocktails = [
       pl: ["Gin", "Wermut"],
       en: ["Gin", "Vermouth"]
     },
-    category: "gin",
+    categories: ["wermut", "gin"],
     description: {
       pl: "Wytrawna prostota ginu i wermutu — ikona klasyki.",
       en: "The dry simplicity of gin and vermouth — the icon of classics."
@@ -297,7 +297,7 @@ const cocktails = [
       pl: ["Wódka", "Syrop waniliowy", "Syrop marakuja", "Sok z limonki", "Prosecco"],
       en: ["Vodka", "Vanilla syrup", "Passion fruit syrup", "Lime juice", "Prosecco"]
     },
-    category: "vodka",
+    categories: ["vodka", "wermut"],
     description: {
       pl: "Uwodzicielskie połączenie wanilii, marakui i musującego Prosecco.",
       en: "A seductive blend of vanilla, passion fruit, and bubbly Prosecco."
@@ -489,7 +489,7 @@ const cocktails = [
       pl: ["Irish Cream", "Whiskey"],
       en: ["Irish Cream", "Whiskey"]
     },
-    category: "liqueur",
+    categories: ["whiskey", "liqueur"],
     description: {
       pl: "Kremowa Irish Cream harmonizuje z mocą whiskey.",
       en: "Creamy Irish Cream harmonizes with the strength of whiskey."
@@ -501,7 +501,7 @@ const cocktails = [
       pl: ["Whiskey", "Likier miodowy", "Sok z cytryny"],
       en: ["Whiskey", "Honey liqueur", "Lemon juice"]
     },
-    category: "whiskey",
+    categories: ["whiskey", "liqueur"],
     description: {
       pl: "Złoty nektar miodu i cytrusów w objęciach bourbonu.",
       en: "Golden nectar of honey and citrus embraced by bourbon."
@@ -532,17 +532,43 @@ const cocktails = [
     }
   },
   {
-    name: { pl: "Old Virginia Manhattan", en: "Old Virginia Manhattan" },
+    name: { pl: "Old Manhattan", en: "Old Manhattan" },
     ingredients: {
       pl: ["Bourbon", "Martini Bianco", "Angostura bitters"],
       en: ["Bourbon", "Martini Bianco", "Angostura bitters"]
     },
-    category: "whiskey",
+    categories: ["whiskey", "wermut"],
     description: {
       pl: "Wersja Manhattan z bourbonem i eleganckim wermutem biało.",
       en: "A Manhattan-style cocktail with bourbon and elegant bianco vermouth."
     }
   },
+{
+  name: {
+    pl: "Hugo",
+    en: "Hugo"
+  },
+  ingredients: {
+    pl: [
+      "Prosecco",
+      "Syrop bzu",
+      "Woda gazowana",
+      "Liście mięty"
+    ],
+    en: [
+      "Prosecco",
+      "Elderflower syrup",
+      "Soda water",
+      "Mint leaves"
+    ]
+  },
+  categories: ["wermut"],
+  description: {
+    pl: "Orzeźwiający koktajl z Prosecco, syropu z kwiatów bzu i mięty.",
+    en: "A refreshing cocktail combining Prosecco, elderflower syrup and mint."
+  }
+},
+
   {
   name: {
     pl: "Szarlotka",
@@ -567,7 +593,7 @@ const cocktails = [
     pl: ["Wódka", "Rum", "Gin", "Whiskey", "Triple sec", "Coca-Cola", "Cytryna"],
     en: ["Vodka", "Rum", "Gin", "Whiskey", "Triple sec", "Coke", "Lemon"]
   },
-  category: "rum", // albo możesz dodać nową kategorię 'mix'
+  categories: ["vodka", "rum", "gin", "whiskey"], 
   description: {
     pl: "Klasyczny koktajl z czterema mocnymi alkoholami i nutą coli.",
     en: "The classic four-spirit cocktail topped with a splash of cola."
