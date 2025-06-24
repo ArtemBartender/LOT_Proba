@@ -100,9 +100,14 @@ function renderCocktails() {
   const container = document.getElementById('cocktail-list');
   container.innerHTML = '';
 
-  let filtered = cocktails.filter(c =>
-    currentCategory === 'all' || c.category === currentCategory
-  );
+let filtered = cocktails.filter(c =>
+  currentCategory === 'all'
+  // если у объекта есть массив c.categories — проверяем его
+  || (Array.isArray(c.categories)
+       ? c.categories.includes(currentCategory)
+       : c.category === currentCategory
+     )
+);
 
   const q = searchInput.value.trim().toLowerCase();
   if (q) {
