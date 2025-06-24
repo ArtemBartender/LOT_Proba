@@ -120,44 +120,45 @@ function renderCocktails() {
     return;
   }
 
-  filtered.forEach(c => {
-    const card = document.createElement('div');
-    card.className = 'cocktail-card';
-    const inner = document.createElement('div');
-    inner.className = 'card-inner';
+filtered.forEach((c, idx) => {
+  const card = document.createElement('div');
+  card.className = 'cocktail-card';
+  const inner = document.createElement('div');
+  inner.className = 'card-inner';
 
-    const front = document.createElement('div');
-    front.className = 'card-front';
-    const nameEl = document.createElement('h2');
-    nameEl.textContent = c.name[language];
-    front.appendChild(nameEl);
-    c.ingredients[language].forEach(ing => {
-      const p = document.createElement('p');
-      p.textContent = ing;
-      front.appendChild(p);
-    });
-
-    const back = document.createElement('div');
-    back.className = 'card-back';
-    const desc = document.createElement('p');
-    desc.textContent = c.description[language];
-    back.appendChild(desc);
-
-    inner.append(front, back);
-    card.appendChild(inner);
-    container.appendChild(card);
-
-    card.addEventListener('click', () => {
-      card.classList.toggle('flipped');
-      if (typeof gtag === 'function') {
-        gtag('event', 'flip_card', {
-          event_category: 'engagement',
-          event_label: c.name[language],
-          transport_type: 'beacon'
-        });
-      }
-    });
+  const front = document.createElement('div');
+  front.className = 'card-front';
+  const nameEl = document.createElement('h2');
+  // добавляем номер +1, чтобы нумерация шла с 1
+  nameEl.textContent = `${idx + 1}. ${c.name[language]}`;
+  front.appendChild(nameEl);
+  c.ingredients[language].forEach(ing => {
+    const p = document.createElement('p');
+    p.textContent = ing;
+    front.appendChild(p);
   });
+
+  const back = document.createElement('div');
+  back.className = 'card-back';
+  const desc = document.createElement('p');
+  desc.textContent = c.description[language];
+  back.appendChild(desc);
+
+  inner.append(front, back);
+  card.appendChild(inner);
+  container.appendChild(card);
+
+  card.addEventListener('click', () => {
+    card.classList.toggle('flipped');
+    if (typeof gtag === 'function') {
+      gtag('event', 'flip_card', {
+        event_category: 'engagement',
+        event_label: c.name[language],
+        transport_type: 'beacon'
+      });
+    }
+  });
+});
 }
 
 // Surprise me
