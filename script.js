@@ -120,7 +120,10 @@ function renderCocktails() {
     return;
   }
 
-filtered.forEach((c, idx) => {
+filtered.forEach(c => {
+  // находим оригинальный индекс в общем массиве
+  const origIndex = cocktails.indexOf(c);
+
   const card = document.createElement('div');
   card.className = 'cocktail-card';
   const inner = document.createElement('div');
@@ -128,10 +131,12 @@ filtered.forEach((c, idx) => {
 
   const front = document.createElement('div');
   front.className = 'card-front';
+
   const nameEl = document.createElement('h2');
-  // добавляем номер +1, чтобы нумерация шла с 1
-  nameEl.textContent = `${idx + 1}. ${c.name[language]}`;
+  // постоянный номер из полного списка
+  nameEl.textContent = `${origIndex + 1}. ${c.name[language]}`;
   front.appendChild(nameEl);
+
   c.ingredients[language].forEach(ing => {
     const p = document.createElement('p');
     p.textContent = ing;
